@@ -1,0 +1,46 @@
+
+
+var wid = 0;
+var wrnd = 0;
+var wref = "";
+var wdoc = "";
+var wtitle = "";
+var disx = 0;
+var disy = 0;
+var disd = 0;
+var version = "17";
+
+var strTracker = "";
+
+function track_visitor( website_id, website_title )
+{
+	wid = website_id;
+	wrnd = Math.random();
+	wdoc = document.location;
+	wtit = document.title;
+	if(website_title!="") wtit = website_title;
+	disx = screen.width;
+	disy = screen.height;
+	navigator.appName!="Netscape"?disd=screen.colorDepth:disd=screen.pixelDepth;
+
+	wref = document.referrer;
+	
+	
+	window.defaultOnError = window.onerror;
+	window.onerror=displayCounter;
+	
+	
+	if(top.document.referrer!=null) wref=top.document.referrer;
+	
+	displayCounter();
+	
+	function displayCounter()
+	{
+		
+		window.onerror=window.defaultOnError;
+		
+		strTracker = "<a href='http://www.chart.dk/ref.asp?id=" + wid + "' target='_blank'><img src='http://cluster.chart.dk/reghit.asp?secID=" + wrnd + "&website_id=" + wid + "&ref=" + escape(wref) + "&doc=" + escape(wdoc) + "&title=" + escape(wtit) + "&disx=" + disx + "&disy=" + disy + "&disd=" + disd + "&v=" + version + "' border='0'></a>";
+		document.write(strTracker);
+		return true;
+	}
+}

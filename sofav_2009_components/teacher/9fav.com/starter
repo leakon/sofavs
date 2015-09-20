@@ -1,0 +1,42 @@
+function getLargestFrame() {
+	var _frames = null;
+
+	if (document.getElementsByTagName('frame').length > 0)
+		_frames = window.frames;
+	var largestFrame = null;
+
+	if (_frames && _frames.length > 0) {
+		for (i=0; i<_frames.length; i++) {
+			var subFrame = _frames[i];
+			if (largestFrame==null) {
+				largestFrame = subFrame;
+			} else {
+				var largestArea = largestFrame.document.body.clientHeight * largestFrame.document.body.clientWidth;
+				var currentArea = subFrame.document.body.clientHeight * subFrame.document.body.clientWidth;
+				if (currentArea > largestArea)
+					largestFrame = subFrame
+			}
+		}
+	} else {
+		largestFrame = window;
+	}
+
+	return largestFrame;
+}
+
+var script = null;
+function launch() {
+	script = getLargestFrame().document.createElement('script');
+	with(script) {
+		setAttribute('id', 'fav_bookmark_scripts');
+		setAttribute('type', 'text/javascript');
+		setAttribute('src', 'http://www.9fav.com/fav/starter?start=true&url=' + encodeURIComponent(getLargestFrame().location.href));
+	}
+	script.onload = script.onreadystatechange = function() {
+		if (this.readyState && this.readyState == 'loading') return;
+		var launcher = document.getElementById('fav_bookmark_scripts');
+		launcher.parentNode.removeChild(launcher);
+	}
+	getLargestFrame().document.body.appendChild(script);
+}
+setTimeout("launch()",1000);

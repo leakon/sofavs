@@ -1,0 +1,17 @@
+db1.web.bjt.qihoo.net
+
+mysql -ucms -pcms qhcms -e 'select title, surl, tags, content from bbs_cms_data_posts limit 0, 100000' > qhcms.txt
+
+mysql> load data infile 'd:\\qhcms.txt' into table qhcms ignore 1 lines ( title, surl, tag, content );
+
+load data infile 'd:\\t.txt' into table qhcms ( title, surl, tag, content );
+
+set names 'utf8'; load data infile 'd:\\t.txt' into table qhcms ( title );
+
+set names 'utf8'; load data infile 'd:\\t8.txt' into table qhcms ( title );
+
+set names 'gbk'; load data infile 'd:\\t8.txt' into table qhcms ( title );
+
+set names 'latin1'; load data infile 'd:\\t8.txt' into table qhcms ( title );
+
+load data infile 'd:\\qhcms_utf8.txt' into table qhcms ignore 1 lines ( title, surl, tag, content );

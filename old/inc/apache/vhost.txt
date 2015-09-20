@@ -1,0 +1,16 @@
+# sofav 本地虚拟主机
+<VirtualHost *:80>
+    DocumentRoot "D:/My Programs/xampp/htdocs/kk/code/leakon/sofav/www_dev"
+    ServerName dev.sofav.com
+    RewriteEngine On
+#    RewriteRule ^/(.*) /main.php?task=$1 [QSA,NE]
+    RewriteRule ^/test/(.*) /test.php?task=$1 [QSA,NE]
+    RewriteRule ^/post/?(.*) /main.php?task=post&$1 [QSA,NE]
+    RewriteRule ^/mylist/(.*) /main.php?task=mylist&user=$1 [QSA,NE]
+</VirtualHost>
+
+# sofav 本地虚拟主机
+<VirtualHost *:80>
+    DocumentRoot "D:/My Programs/xampp/htdocs/kk/code/leakon/sofav/files"
+    ServerName files.sofav.com
+</VirtualHost>

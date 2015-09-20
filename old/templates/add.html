@@ -1,0 +1,85 @@
+	<div id="add">
+		
+		<div id="add_form">
+		<div class="add_title">Add: 添加新的收藏</div>
+		<form name="form1" id="add_form_1" action="<{$file_main}>" method="get">
+			<div class="add_margin">
+				<input type="hidden" name="<{$f_task}>" value="<{$task}>" />
+				<input type="hidden" name="<{$f_act}>" value="<{$act}>" />
+				1. 标题<br />
+				<input type="text" id="add_input_1" name="ftitle" value="" class="add_input_txt" /><br />
+				2. 网址<br />
+				<input type="text" id="add_input_2" name="furl" value="http://" class="add_input_txt" /><br />
+			</div>
+			<fieldset class="add_fieldset">
+				<legend>选填项</legend>
+				3. 分类
+				<img src="<{$images}>category.gif" id="my_categories" class="add_sch_img" alt="浏览我的分类" /><span class="add_sch_txt" id="my_categories_t" title="浏览我的分类">我的分类</span>
+				<img src="<{$images}>category.gif" id="system_categories" class="add_sch_img" alt="浏览系统分类" /><span class="add_sch_txt" id="system_categories_t" title="浏览系统分类">系统分类</span>
+				<br />
+				<input type="text" id="add_input_3" name="fcate" value="" class="add_input_txt" /><br />
+				4. 标签
+				<img src="<{$images}>tag.gif" id="my_tags" class="add_sch_img" alt="浏览我的标签" /><span class="add_sch_txt" id="my_tags_t" title="浏览我的标签">我的标签</span>
+				<img src="<{$images}>tag.gif" id="system_tags" class="add_sch_img" alt="浏览系统标签" /><span class="add_sch_txt" id="system_tags_t" title="浏览系统标签">系统标签</span>
+				<br />
+				<input type="text" id="add_input_4" name="ftag" value="" class="add_input_txt" /><br />
+				5. 描述
+				<textarea id="add_input_5" name="fdesc" class="add_input_textarea" rows="" cols=""></textarea>
+				6. 设为私有
+				<input type="checkbox" id="add_input_6" name="fprivate" value="1" /><label for="add_input_6">私有</label>
+			</fieldset>
+			&nbsp;<input type="submit" value=" 保存 " class="add_button" />
+			&nbsp;<input type="button" value=" 清空 " class="add_button" onclick="frm_reset( 'add_form_1' )" />
+		</form>
+		</div>
+		
+		<div id="add_assist">
+				<img src="<{$images}>notice.gif" alt="" class="add_img" />
+				<div class="add_txt">每一步的帮助和提示</div>
+			<div id="add_input_1_a" class="notice" style="display:none">
+				<span class="add_step">Step: 1</span><b>为您的收藏设定标题</b><br />
+				例如: Spotback -	Personal News<br />
+				保存的标题将作为主要的搜索字段<br />
+				建议您选择便于记忆的短语
+			</div>
+			<div id="add_input_2_a" class="notice" style="display:none">
+				<span class="add_step">Step: 2</span><b>设定收藏的网址</b><br />
+				例如: http://spotback.com/<br />
+				很多网站严格区分大小写不同的英文字母<br />
+				请不要更改原始网址
+			</div>
+			<div id="add_input_3_a" class="notice" style="display:none">
+				<span class="add_step">Step: 3</span><b>设定所属分类</b><br />
+				您的每个收藏都应该归属到某个分类中<br />
+				您可以选择系统提供的分类<br />
+				或在输入框中输入一个新的分类名<br />
+				系统将自动为您创建该分类<br />
+				本项留空将默认设为“未分类”
+			</div>
+			<div id="add_input_4_a" class="notice" style="display:none">
+				<span class="add_step">Step: 4</span><b>设定收藏的标签</b><br />
+				您可以为您的收藏设定多个标签<br />
+				当您收藏了大量网址时<br />
+				它能帮助您快速找到想要的结果
+			</div>
+			<div id="add_input_5_a" class="notice" style="display:none">
+				<span class="add_step">Step: 5</span><b>设定收藏的摘要和描述</b><br />
+				在您浏览所有的收藏时<br />
+				它能帮助您快速回忆起收藏的内容<br />
+				您也可以在这里记录一些信息<br />
+				为了安全<br />
+				请勿填写帐号、密码或电话号码等信息
+			</div>
+			<div id="add_input_6_a" class="notice" style="display:none">
+				<span class="add_step">Step: 6</span><b>选择是否公开您的收藏</b><br />
+				在默认情况下<br />
+				您的收藏将公开给所有的用户<br />
+				如果您不希望别人看到您的收藏<br />
+				请将本选项设为“私有”
+			</div>
+		</div>
+		
+	</div>
+<script type="text/javascript">
+init_add();	
+</script>

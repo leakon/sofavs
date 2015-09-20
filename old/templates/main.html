@@ -1,0 +1,111 @@
+	<div id="topic">
+		
+		<div id="recommend">
+		Search: 帮您搜索<span class="spec_orange">自己</span>和<span class="spec_orange">别人</span>的收藏
+		<form name="form1" action="" method="get">
+			<input type="text" name="q" value="" class="input_text" />
+			<input type="submit" value="Sofav 搜索" class="input_button" />
+			<div class="input_label">
+				<input type="radio" id="form1_t1" name="t" value="1" /> <label for="form1_t1">标题</label> &nbsp; 
+				<input type="radio" id="form1_t2" name="t" value="2" /> <label for="form1_t2">标签</label>
+			</div>
+		</form>
+		Tags: 帮您挑选最近热门的<span class="spec_orange">分类</span>和<span class="spec_orange">标签</span>
+		
+		<div id="hot_tags">
+			<ul>
+				<li class="tag_separator"></li>
+				<li class="tag_txt">热门关注</li>
+				<li class="tag_separator"></li>
+				<li class="tag_txt_curr">互联网</li>
+				<li class="tag_separator"></li>
+				<li class="tag_txt">新闻</li>
+				<li class="tag_separator"></li>
+				<li class="tag_txt">图片</li>
+				<li class="tag_separator"></li>
+				<li class="tag_txt">娱乐</li>
+				<li class="tag_separator"></li>
+				<li class="tag_txt">体育</li>
+				<li class="tag_separator"></li>
+				<li class="tag_txt">城市</li>
+				<li class="tag_separator"></li>
+			</ul>
+			<div id="hot_tag_words">
+				<a href="2#">陈良宇</a>
+				<a href="#">谢霆锋</a>
+				<a href="#">web2.0</a>
+				<a href="#">国庆</a>
+				<a href="#">超女</a>
+				<a href="#">手机</a>
+				<a href="#">北大教授</a>
+				<a href="#">黄金甲</a>
+				<a href="#">华夜</a>
+				<a href="#">谢霆锋</a>
+				<a href="#">web2.0</a>
+				<a href="#">国庆</a>
+				<a href="#">超女</a>
+				<a href="#">手机</a>
+				<a href="#">北大教授</a>
+				<a href="#">黄金甲</a>
+				<a href="#">华夜</a>
+			</div>
+		</div>
+		
+		</div>
+		
+		<div id="topuser">
+		Today: 今日Top榜
+			<div class="top_one">
+				<img src="<{$images}>unknown.jpg" width="40" height="40" border="0" alt="" class="top_img" />
+				<div class="top_txt">leakon<br />
+				<img src="<{$images}>favorite.gif" alt="248 个收藏" class="top_ico" /><div title="248 个收藏" class="top_num">248</div>
+				<img src="<{$images}>category.gif" alt="124 个分类" class="top_ico" /><div title="124 个分类" class="top_num">124</div>
+				<img src="<{$images}>tag.gif" alt="36 个标签" class="top_ico" /><div title="36 个标签" class="top_num">36</div>
+				</div>
+			</div>
+			<div class="top_one">
+				<img src="<{$images}>unknown.jpg" width="40" height="40" border="0" alt="" class="top_img" />
+				<div class="top_txt">pinkcafe<br />
+				<img src="<{$images}>favorite.gif" alt="248 个收藏" class="top_ico" /><div title="248 个收藏" class="top_num">248</div>
+				<img src="<{$images}>category.gif" alt="124 个分类" class="top_ico" /><div title="124 个分类" class="top_num">124</div>
+				<img src="<{$images}>tag.gif" alt="36 个标签" class="top_ico" /><div title="36 个标签" class="top_num">36</div>
+				</div>
+			</div>
+			<div class="top_one">
+				<img src="<{$images}>unknown.jpg" width="40" height="40" border="0" alt="" class="top_img" />
+				<div class="top_txt">daqu<br />
+				<img src="<{$images}>favorite.gif" alt="248 个收藏" class="top_ico" /><div title="248 个收藏" class="top_num">248</div>
+				<img src="<{$images}>category.gif" alt="124 个分类" class="top_ico" /><div title="124 个分类" class="top_num">124</div>
+				<img src="<{$images}>tag.gif" alt="36 个标签" class="top_ico" /><div title="36 个标签" class="top_num">36</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div id="list">
+		
+		<div id="recent">
+			<span class="recent_title">
+			<a href="#"><img src="<{$images}>feed.gif" alt="订阅 RSS" border="0" /></a> 最新收藏
+			</span>
+			
+<{foreach name=recent key=idx item=info from=$recent.result}>
+			<div>
+				<img src="<{$images}>favorite.gif" border="0" alt="" />
+				<a href="http://www.sofav.com/" target="_blank"><{$info.ftitle}></a>
+			</div>
+			<!--
+			<div>
+				<img src="<{$images}>favorite.gif" border="0" alt="" />
+				<a href="http://www.sofav.com/" target="_blank">群易网-IM群，支持MSN群和QQ群的即时通讯社区</a>
+			</div>
+			-->
+<{/foreach}>
+		</div>
+		
+		<div class="block_separator">&nbsp;</div>
+		
+		
+		
+	</div>

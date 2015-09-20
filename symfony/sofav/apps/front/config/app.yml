@@ -1,0 +1,4 @@
+# default values
+all:
+  pager:
+    post_list_size: 10

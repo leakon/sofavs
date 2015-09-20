@@ -1,0 +1,798 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"><head>
+
+
+<title>Drag and drop</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="dragdrop_files/quirksmode.css">
+<link rel="up" href="http://www.quirksmode.org/js/intro.html">
+<script type="text/javascript" src="dragdrop_files/quirksmode.js"></script><style>body {padding-top: 161px;}</style>
+<style type="text/css">
+
+div#test,div#test2 {
+	width: 150px;
+	height: 50px;
+	border: 3px solid #AF0078;
+	padding: 10px;
+	background-color: #ffffff;
+	position: absolute;
+	top: 300px;
+	left: 0;
+	cursor: pointer;
+	z-index: 200;
+}
+
+div#test2 {
+	position: fixed;
+	top: 220px;
+}
+
+div.dragged {
+	cursor: all-scroll !important;
+	border-color: #cc0000 !important;
+	z-index: 300 !important;
+}
+
+a.keyLink {
+	position: absolute;
+	top: -2px;
+	right: -2px;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000000;
+	background-image: none;
+	font-size: 120%;
+	text-align: center;
+	padding: 0;
+	background-color: #ffffff;
+	opacity: .5;
+}
+
+div.dragged a.keyHTML,a.keyHTML:focus {
+	border-color: #cc0000;
+}
+
+</style>
+<script type="text/javascript">
+<!--
+
+dragDrop = {
+	keyHTML: '<a href="#" class="keyLink">#</a>',
+	keySpeed: 10, // pixels per keypress event
+	initialMouseX: undefined,
+	initialMouseY: undefined,
+	startX: undefined,
+	startY: undefined,
+	dXKeys: undefined,
+	dYKeys: undefined,
+	draggedObject: undefined,
+	initElement: function (element) {
+		if (typeof element == 'string')
+			element = document.getElementById(element);
+		element.onmousedown = dragDrop.startDragMouse;
+		element.innerHTML += dragDrop.keyHTML;
+		var links = element.getElementsByTagName('a');
+		var lastLink = links[links.length-1];
+		lastLink.relatedElement = element;
+		lastLink.onclick = dragDrop.startDragKeys;
+	},
+	startDragMouse: function (e) {
+		dragDrop.startDrag(this);
+		var evt = e || window.event;
+		dragDrop.initialMouseX = evt.clientX;
+		dragDrop.initialMouseY = evt.clientY;
+		addEventSimple(document,'mousemove',dragDrop.dragMouse);
+		addEventSimple(document,'mouseup',dragDrop.releaseElement);
+		return false;
+	},
+	startDragKeys: function () {
+		dragDrop.startDrag(this.relatedElement);
+		dragDrop.dXKeys = dragDrop.dYKeys = 0;
+		addEventSimple(document,'keydown',dragDrop.dragKeys);
+		addEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+		this.blur();
+		return false;
+	},
+	startDrag: function (obj) {
+		if (dragDrop.draggedObject)
+			dragDrop.releaseElement();
+		dragDrop.startX = obj.offsetLeft;
+		dragDrop.startY = obj.offsetTop;
+		dragDrop.draggedObject = obj;
+		obj.className += ' dragged';
+	},
+	dragMouse: function (e) {
+		var evt = e || window.event;
+		var dX = evt.clientX - dragDrop.initialMouseX;
+		var dY = evt.clientY - dragDrop.initialMouseY;
+		dragDrop.setPosition(dX,dY);
+		return false;
+	},
+	dragKeys: function(e) {
+		var evt = e || window.event;
+		var key = evt.keyCode;
+		switch (key) {
+			case 37:	// left
+			case 63234:
+				dragDrop.dXKeys -= dragDrop.keySpeed;
+				break;
+			case 38:	// up
+			case 63232:
+				dragDrop.dYKeys -= dragDrop.keySpeed;
+				break;
+			case 39:	// right
+			case 63235:
+				dragDrop.dXKeys += dragDrop.keySpeed;
+				break;
+			case 40:	// down
+			case 63233:
+				dragDrop.dYKeys += dragDrop.keySpeed;
+				break;
+			case 13: 	// enter
+			case 27: 	// escape
+				dragDrop.releaseElement();
+				return false;
+			default:
+				return true;
+		}
+		dragDrop.setPosition(dragDrop.dXKeys,dragDrop.dYKeys);
+		if (evt.preventDefault) // also solves problem in Saf; keypress part of default ???
+			evt.preventDefault();
+		return false;
+	},
+	setPosition: function (dx,dy) {
+		dragDrop.draggedObject.style.left = dragDrop.startX + dx + 'px';
+		dragDrop.draggedObject.style.top = dragDrop.startY + dy + 'px';
+	},
+	switchKeyEvents: function () {
+
+		// for Opera and Safari 1.3
+
+		removeEventSimple(document,'keydown',dragDrop.dragKeys);
+		removeEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+		addEventSimple(document,'keypress',dragDrop.dragKeys);
+	},
+	releaseElement: function() {
+		removeEventSimple(document,'mousemove',dragDrop.dragMouse);
+		removeEventSimple(document,'mouseup',dragDrop.releaseElement);
+		removeEventSimple(document,'keypress',dragDrop.dragKeys);
+		removeEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+		removeEventSimple(document,'keydown',dragDrop.dragKeys);
+		dragDrop.draggedObject.className = dragDrop.draggedObject.className.replace(/dragged/,'');
+		dragDrop.draggedObject = null;
+	}
+}
+
+function init() {
+	dragDrop.initElement('test');
+	dragDrop.initElement(document.getElementById('test2'));
+}
+
+// -->
+</script>
+
+</head><body><p id="lastModPar">Page last changed <span id="lastMod">2 years ago</span></p><div class="pageHeader"><img src="dragdrop_files/header_swoosh.gif" alt="">
+
+<div class="specialMessage">
+	<a href="http://www.quirksmode.org/about/conferences.html">See me speak</a>
+</div>
+
+<div class="mainNav">
+	<a href="http://www.quirksmode.org/compatibility.html">Compatibility</a>
+	<a href="http://www.quirksmode.org/blog/">QuirksBlog</a>
+	<a href="http://www.quirksmode.org/about/">About</a>
+</div>
+
+<a class="logoQuirksmode" href="http://www.quirksmode.org/" title="Home"><img src="dragdrop_files/logo_quirksmode.gif" alt="QuirksMode"></a>
+
+
+<div class="extraInfo">
+	<img class="logoPPK" src="dragdrop_files/logo_ppk.gif" alt="PPK">
+	<a href="http://www.quirksmode.org/sitemap.html">sitemap</a><a href="http://www.quirksmode.org/contact.html" class="rightExtraLink">contact</a>
+	<form action="http://www.google.com/search" method="get" title="Uses Google" id="mainSearch">
+		<input name="q" id="searchTop" value="Search QuirksMode.org">
+		<input id="searchSubmit" value="Search" type="submit">
+	</form>
+</div>
+
+<!--[if lte IE 6]>
+  <p class="ie6"><strong>IE6?</strong> Really? Isn&#8217;t it time to <a href="/upgrade.html">upgrade to a better browser</a>? 
+  (Unless you&#8217;re here for testing purposes, of course.)</p>
+<![endif]-->
+</div>
+
+<h2 id="top">Drag and drop</h2>
+
+<div style="top: 186px; left: 0px;" id="header"><div id="TOC"><div id="innertoc"><span id="contentheader">show page contents</span><div><a href="#top" class="page">Top</a><a href="#link1" class="page">Use</a><a href="#link2" class="page indent">Properties</a><a href="#link3" class="page">dragDrop object</a><a href="#link4" class="page">What a drag and drop is</a><a href="#link5" class="page">Basics</a><a href="#link6" class="page indent">Initialising an element</a><a href="#link7" class="page indent">Basic positioning data</a><a href="#link8" class="page">The mouse script</a><a href="#link9" class="page indent">The events</a><a href="#link10" class="page indent">Mousedown</a><a href="#link11" class="page indent">Mousemove</a><a href="#link12" class="page indent">Mouseup</a><a href="#link13" class="page">The keyboard script</a><a href="#link14" class="page indent">Basic interaction</a><a href="#link15" class="page indent">The events</a><a href="#link16" class="page indent">Initialising the key script</a><a href="#link17" class="page indent">Dragging by keystrokes</a><a href="#link18" class="page">Releasing the element</a></div></div></div>
+<div id="siteNav">
+	<span id="menuLink">show site navigation</span>
+	<p id="waitMessageNav">Loading site navigation; please wait...</p>
+</div></div>
+
+<div class="floater">
+<p>The mouse drag and drop doesn't work correctly in iCab. It's thrown off the mark by the fact that my <code>&lt;body&gt;</code>
+doesn't span the entire page (the dragged element is 233 px off; exactly the width of the left gutter).</p>
+<p>If your page has a traditional <code>&lt;body&gt;</code> that spans the entire page length and height, chances are that
+the script will work in iCab.</p>
+<p>iCab doesn't support key events at all, so the keyboard script doesn't work.</p>
+</div>
+
+<p class="intro">Here's a simple accessible drag and drop script. It works with both mouse and keyboard.</p>
+
+<div id="test">This is a drag and drop element with <code>position: absolute</code>.<a href="#" class="keyLink">#</a></div>
+<div id="test2">This is a drag and drop element with <code>position: fixed</code>.<a href="#" class="keyLink">#</a></div>
+
+<p>When the '#' link in the example boxes is activated (either by tabbing to it and hitting Enter or by clicking
+on it) the element can be dragged by the arrow keys. Pressing Enter or Escape releases it. (Feel free to change
+these keys, by the way. I'm not sure what the release keys ought to be, although Enter and Escape are both
+defensible.)
+
+</p><h3 id="link1">Use</h3>
+
+<ol>
+	<li class="">Copy the <code>dragDrop</code> object you find below on this page.</li>
+	<li class="odd">Copy my <a href="http://www.quirksmode.org/js/eventSimple.html">addEventSimple and removeEventSimple</a> functions; the object
+	needs them.</li>
+	<li class="">Set the <code>keyHTML</code> and <code>keySpeed</code> properties to the values of
+	your choice (see below for an explanation).</li>
+	<li class="odd">Make sure that all elements you want to be drag and droppable have
+	<code><a href="http://www.quirksmode.org/css/position.html">position</a>: absolute</code> or
+	<code>fixed</code>.</li>
+	<li class="">Send all elements you want to be drag and droppable to the object's <code>initElement</code> function.
+	Send either an object or a string, which is interpreted as an ID. For instance:
+	<pre>dragDrop.initElement('test');
+dragDrop.initElement(document.getElementById('test2'));</pre>
+	</li>
+	<li class="odd">The script automatically adds a class="dragged" to an element that's being dragged. You can use
+	this for some CSS effects.</li>
+	<li class="">If you want to do something with the element once the user has dropped it, add your own function
+	calls to the <code>releaseElement</code> function.</li>
+</ol>
+
+<h4 id="link2">Properties</h4>
+
+<p>You should set two properties.</p>
+
+<p><code>keyHTML</code> contains the HTML of the keyboard-accessible link that
+every draggable object needs. I kept the HTML simple—just a link with a class for a bit of styling. You
+can use any HTML construct that you like, but keep in mind that you <em>need</em> a link, since (apart from form
+elements) links are the only elements that are reliably keyboard-focusable in all browsers; and keyboard users
+need to be able to focus on something to trigger the script.</p>
+
+<p><code>keySpeed</code> gives the speed of the keyboard drag and drop, in pixels per keypress event. I like
+the value 10, but I encourage you to experiment with faster or slower movement.</p>
+
+<p class="smaller">There are seven more properties, but they're all internal to the script. Initially they're all set to
+<code>undefined</code>, and the relevant functions will assign values to them. (In fact, I could have left out these
+property declarations entirely, but I like declaring the variables I need at the start of my script.)</p>
+
+<h3 id="link3">dragDrop object</h3>
+
+<p>Copy this object to your page (and don't forget the <a href="http://www.quirksmode.org/js/eventSimple.html">addEventSimple and removeEventSimple</a> functions).</p>
+
+<pre style="margin-right: -625px;">dragDrop = {
+	keyHTML: '&lt;a href="#" class="keyLink"&gt;#&lt;/a&gt;',
+	keySpeed: 10, // pixels per keypress event
+	initialMouseX: undefined,
+	initialMouseY: undefined,
+	startX: undefined,
+	startY: undefined,
+	dXKeys: undefined,
+	dYKeys: undefined,
+	draggedObject: undefined,
+	initElement: function (element) {
+		if (typeof element == 'string')
+			element = document.getElementById(element);
+		element.onmousedown = dragDrop.startDragMouse;
+		element.innerHTML += dragDrop.keyHTML;
+		var links = element.getElementsByTagName('a');
+		var lastLink = links[links.length-1];
+		lastLink.relatedElement = element;
+		lastLink.onclick = dragDrop.startDragKeys;
+	},
+	startDragMouse: function (e) {
+		dragDrop.startDrag(this);
+		var evt = e || window.event;
+		dragDrop.initialMouseX = evt.clientX;
+		dragDrop.initialMouseY = evt.clientY;
+		addEventSimple(document,'mousemove',dragDrop.dragMouse);
+		addEventSimple(document,'mouseup',dragDrop.releaseElement);
+		return false;
+	},
+	startDragKeys: function () {
+		dragDrop.startDrag(this.relatedElement);
+		dragDrop.dXKeys = dragDrop.dYKeys = 0;
+		addEventSimple(document,'keydown',dragDrop.dragKeys);
+		addEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+		this.blur();
+		return false;
+	},
+	startDrag: function (obj) {
+		if (dragDrop.draggedObject)
+			dragDrop.releaseElement();
+		dragDrop.startX = obj.offsetLeft;
+		dragDrop.startY = obj.offsetTop;
+		dragDrop.draggedObject = obj;
+		obj.className += ' dragged';
+	},
+	dragMouse: function (e) {
+		var evt = e || window.event;
+		var dX = evt.clientX - dragDrop.initialMouseX;
+		var dY = evt.clientY - dragDrop.initialMouseY;
+		dragDrop.setPosition(dX,dY);
+		return false;
+	},
+	dragKeys: function(e) {
+		var evt = e || window.event;
+		var key = evt.keyCode;
+		switch (key) {
+			case 37:	// left
+			case 63234:
+				dragDrop.dXKeys -= dragDrop.keySpeed;
+				break;
+			case 38:	// up
+			case 63232:
+				dragDrop.dYKeys -= dragDrop.keySpeed;
+				break;
+			case 39:	// right
+			case 63235:
+				dragDrop.dXKeys += dragDrop.keySpeed;
+				break;
+			case 40:	// down
+			case 63233:
+				dragDrop.dYKeys += dragDrop.keySpeed;
+				break;
+			case 13: 	// enter
+			case 27: 	// escape
+				dragDrop.releaseElement();
+				return false;
+			default:
+				return true;
+		}
+		dragDrop.setPosition(dragDrop.dXKeys,dragDrop.dYKeys);
+		if (evt.preventDefault)
+			evt.preventDefault();
+		return false;
+	},
+	setPosition: function (dx,dy) {
+		dragDrop.draggedObject.style.left = dragDrop.startX + dx + 'px';
+		dragDrop.draggedObject.style.top = dragDrop.startY + dy + 'px';
+	},
+	switchKeyEvents: function () {
+		// for Opera and Safari 1.3
+		removeEventSimple(document,'keydown',dragDrop.dragKeys);
+		removeEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+		addEventSimple(document,'keypress',dragDrop.dragKeys);
+	},
+	releaseElement: function() {
+		removeEventSimple(document,'mousemove',dragDrop.dragMouse);
+		removeEventSimple(document,'mouseup',dragDrop.releaseElement);
+		removeEventSimple(document,'keypress',dragDrop.dragKeys);
+		removeEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+		removeEventSimple(document,'keydown',dragDrop.dragKeys);
+		dragDrop.draggedObject.className = dragDrop.draggedObject.className.replace(/dragged/,'');
+		dragDrop.draggedObject = null;
+	}
+}
+</pre>
+
+<h3 id="link4">What a drag and drop is</h3>
+
+<p>A drag and drop is a way of moving an element across the screen. In order to be movable at all the element must
+have <code><a href="http://www.quirksmode.org/css/position.html">position</a>: absolute</code> or <code>fixed</code> so that it can be moved by changing its coordinates
+(<code>style.top</code> and <code>style.left</code>).</p>
+
+<p class="smaller">(In theory the element could have <code>position: relative</code>,
+but this is almost never useful. Besides, the relative case needs some extra position calculations that are not
+part of this script.)</p>
+
+<p>Setting the coordinates is pretty simple; it's finding the values that the coordinates should be set to that's
+the hard part of this script. Most of the script deals with finding them.</p>
+
+<p>In addition, accessibility must be considered. Traditionally, drag and drop scripts work with the mouse, and
+all in all this remains the best option from a usability point of view. Nonetheless, in order to remain accessible
+for people who cannot use a mouse, the drag and drop should react to the keyboard, too.</p>
+
+<h3 id="link5">Basics</h3>
+
+<p>Let's first review some basics.</p>
+
+<h4 id="link6">Initialising an element</h4>
+
+<p>Every drag and drop script starts with initialising the element. This job is done by the following function
+(method):</p>
+
+<pre style="margin-right: -625px;">initElement: function (element) {
+	if (typeof element == 'string')
+		element = document.getElementById(element);
+	element.onmousedown = dragDrop.startDragMouse;
+	element.innerHTML += dragDrop.keyHTML;
+	var links = element.getElementsByTagName('a');
+	var lastLink = links[links.length-1];
+	lastLink.relatedElement = element;
+	lastLink.onclick = dragDrop.startDragKeys;
+},
+</pre>
+
+<p>If the function receives a string it interprets that string as an ID. Then it sets a mousedown
+event for the entire element, in order to start up the mouse part of the script. Note that I use
+<a href="http://www.quirksmode.org/js/events_tradmod.html">traditional event handler registration</a>; that's because I want the <code>this</code>
+keyword to work normally in the <code>startDragMouse</code> function.</p>
+
+<p>Then it takes the <code>keyHTML</code> the author has defined and add it to the element. This bit of HTML contains
+one link, and since it's added to the end of the element, I'm certain that the last link in the element is the one
+that should trigger the keyboard part of the script. The script sets a click event for this link to start up the
+keyboard part of the script. It also stores a reference to the main object in <code>relatedElement</code>; we'll need
+this reference later on.</p>
+
+<p>Now the script waits for the user to take action.</p>
+
+<h4 id="link7">Basic positioning data</h4>
+
+<p>I decided on the following positioning approach: first I read out the initial position of the draggable
+object at the time the dragging starts and store it in <code>startX</code> and <code>startY</code>. Later on the
+script calculates the change in mouse position or the amount of arrow key strokes to determine how much
+the element moves from this initial position.</p>
+
+<span class="ssSpan">Screenshot: Clarification of startX and startY</span><img src="dragdrop_files/dragdrop_startXY.gif" class="screenshot" alt="Clarification of startX and startY">
+
+<p>The <code>startX</code> and <code>startY</code> variables are set by the <code>startDrag</code> function, which is used both by the mouse and by the keyboard script.</p>
+
+<pre style="margin-right: -625px;">startDrag: function (obj) {
+	if (dragDrop.draggedObject)
+		dragDrop.releaseElement();
+	dragDrop.startX = obj.offsetLeft;
+	dragDrop.startY = obj.offsetTop;
+	dragDrop.draggedObject = obj;
+	obj.className += ' dragged';
+},
+</pre>
+
+<p>First of all, if an element is still selected (in drag mode), release it. (We'll get back to
+<code>releaseElement</code> later.)</p>
+
+<p>Then the function finds the current position of the element at the time the dragging starts through the
+<code>offsetLeft</code> and <code>offsetTop</code> properties
+(see the <a href="http://www.quirksmode.org/js/findpos.html">Find Position</a> page)
+and stores them in <code>startX</code> and <code>startY</code> for future
+reference.</p>
+
+<p>Then it stores a reference to the element in <code>draggedObject</code>, and it
+adds a class "dragged" to the element so that the author can define extra styles for an element that's being
+dragged.</p>
+
+<p>Sometimes you want to drag another element than the one the mousedown event takes place on—for instance
+because a mousedown on a title bar (but nowhere else) should initiate the drag and drop. In that case,
+make sure that <code>draggedObject</code> refers to the object you want to drag.</p>
+
+<p>Once the user moves the element either by mouse or by keyboard, the
+complicated parts of the script keep track of how much the position
+of the element should <em>change</em>. This gives values <code>dX</code> and <code>dY</code> (change of X and Y). I
+add these to <code>startX</code> and <code>startY</code>, which gives me the new position of the element.</p>
+
+<p>This function does the actual repositioning:</p>
+
+<pre style="margin-right: -625px;">setPosition: function (dx,dy) {
+	dragDrop.draggedObject.style.left = dragDrop.startX + dx + 'px';
+	dragDrop.draggedObject.style.top = dragDrop.startY + dy + 'px';
+},
+</pre>
+
+<p>It receives a <code>dx</code> and <code>dy</code> calculated by either the mouse or the keyboard scripts and adjusts
+the object's <code>style.top</code> and <code>style.left</code> properties. The element moves.</p>
+
+<p>That's pretty simple; the trick lies in finding the correct <code>dx</code> and <code>dy</code>. The mouse and
+keyboard scripts do this quite differently, so we'll discuss them separately.</p>
+
+<h3 id="link8">The mouse script</h3>
+
+<p>The mouse script is slightly more complicated than the keyboard script when it comes to calculations, but much
+simpler in terms of browser compatibility. Therefore we start with the mouse script.</p>
+
+<h4 id="link9">The events</h4>
+
+<p>First we have to discuss the events we need. Obviously, a drag and drop needs mousedown,
+mousemove and mouseup for selecting the element, dragging it, and releasing it.</p>
+
+<p>Equally obviously, this sequence starts with a mousedown event on the element to be dragged. Therefore all draggable
+elements need an onmousedown event handler that readies the element for dragging and dropping. We already saw
+the line in <code>startDrag</code> that takes care of this:</p>
+
+<pre style="margin-right: -625px;">element.onmousedown = dragDrop.startDragMouse;
+</pre>
+
+<p>However, the mousemove and mouseup event should be set not on the element, but on the entire document. The reason is
+that the user may move the mouse wildly and quickly, and he might leave the dragged element behind. If the mousemove and
+mouseup functions were defined on the dragged element, the user would now lose control because the mouse is not over the
+element any more. That's bad usability.</p>
+
+<p>If we define the mousemove and mouseup on the document, this problem disappears. Wherever the mouse is, the dragged
+element reacts to the mousemove and mouseup events. That's good (or at least better) usability.</p>
+
+<p>In addition you should set the mousemove and mouseup events only when the dragging starts,
+and remove them when the user releases the element. This keeps your script clean
+and also saves some processing time because mousemove is only evaluated when necessary (ie. when the element is
+being dragged).</p>
+
+<h4 id="link10">Mousedown</h4>
+
+<p>Once a mousedown event occurs on a draggable element, the <code>startDragMouse</code> function is executed:</p>
+
+<pre style="margin-right: -625px;">startDragMouse: function (e) {
+	dragDrop.startDrag(this);
+	var evt = e || window.event;
+	dragDrop.initialMouseX = evt.clientX;
+	dragDrop.initialMouseY = evt.clientY;
+	addEventSimple(document,'mousemove',dragDrop.dragMouse);
+	addEventSimple(document,'mouseup',dragDrop.releaseElement);
+	return false;
+},
+</pre>
+
+<p>First it executes the <code>startDrag</code> function we already discussed. Then it finds the current mouse
+position and stores its coordinates in <code>initialMouseX</code> and <code>initialMouseY</code>. Later on we're
+going to compare these values to the current mouse position.</p>
+
+<p>Finally it returns <code>false</code>; this is to suppress the default action of the mouse event: start selecting
+text. We don't want any text to be selected while the dragging goes on; that'd be annoying.</p>
+
+<span class="ssSpan">Screenshot: Clarification of initialMouseX and initialMouseY</span><img src="dragdrop_files/dragdrop_initialMouse.gif" class="screenshot" alt="Clarification of initialMouseX and initialMouseY">
+
+<p>Then it sets the mousemove and mouseup event handlers on the document, for the reasons discussed above. Because
+it's possible that the host page has its own mousemove and mouseup event handlers set on the document, I use
+my <a href="http://www.quirksmode.org/js/eventSimple.html">addEventSimple</a> function that adds my event handlers without disturbing any
+that might already exist.</p>
+
+<h4 id="link11">Mousemove</h4>
+
+<p>Now, whenever the user moves the mouse the <code>dragMouse</code> function is executed.</p>
+
+<pre style="margin-right: -625px;">dragMouse: function (e) {
+	var evt = e || window.event;
+	var dX = evt.clientX - dragDrop.initialMouseX;
+	var dY = evt.clientY - dragDrop.initialMouseY;
+	dragDrop.setPosition(dX,dY);
+	return false;
+},
+</pre>
+
+<p>The function reads out the current mouse coordinates (<code>clientX</code> and <code>clientY</code>) and subtracts
+<code>initialMouseX</code> and <code>initialMouseY</code> from these coordinates.
+This results in the number of pixels the mouse has
+moved since the start of the drag and drop. This is exactly what <code>setPosition</code> expects, so we send <code>dX</code>
+and <code>dY</code> off.</p>
+
+<p>Again we return <code>false</code> to prevent the mousemove event from selecting text.</p>
+
+<span class="ssSpan">Screenshot: Clarification of dX and dY</span><img src="dragdrop_files/dragdrop_dXY.gif" class="screenshot" alt="Clarification of dX and dY">
+
+<h4 id="link12">Mouseup</h4>
+
+<p>When the user releases the mouse, <code>releaseElement</code> is called. We'll discuss that function later.</p>
+
+<h3 id="link13">The keyboard script</h3>
+
+<p>Now let's turn to the more difficult part: the keyboard script. Unlike a mouse drag and drop, there is no accepted
+standard user interface for a keyboard drag and drop (yet). Although the basic interaction is not terribly complicated,
+we should still briefly consider it.</p>
+
+<h4 id="link14">Basic interaction</h4>
+
+<p>The most obvious keys for moving the element are the arrow keys. That's pretty simple.</p>
+
+<p>Activating and releasing the element is more tricky, though, and this is an area where my script could be
+improved.</p>
+
+<p>I decided that the keyboard script can be activated through an extra link I write into all draggable
+elements. There aren't many other options; we need a link because links are reliably focusable in all browsers
+(OK, form fields are, too. You could use a checkbox, I suppose); and putting the link inside the draggable element
+seems the most logical placement (you could place them elsewhere, I suppose, but how is the user to know which link
+triggers which element?)</p>
+
+<p>I decided that the element would be released when the user presses Enter or Escape; more or less because I couldn't
+think of any other keys. If you opt for other keys
+you should add <a href="http://www.quirksmode.org/js/keys.html">the correct key codes</a> here:</p>
+
+<pre style="margin-right: -625px;">case 13: // enter
+case 27: // escape
+	dragDrop.releaseElement();
+	return false;
+</pre>
+
+<h4 id="link15">The events</h4>
+
+<p>The activation event is click. This event is accessible, since it reacts both to a mouse
+click and to an Enter key when the focus is on the element. Therefore the keyboard
+script can be activated by tabbing to the link and pressing Enter, or by clicking on the link.</p>
+
+<p class="smaller">(Strictly speaking, when you click on the link, the element is first activated in mouse
+mode (mousedown), then released (mouseup) and then activated in keyboard mode (click).</p>
+
+<p>The rest of the events are more murky, though. The key events are a mess—especially when you want to
+read out the arrow keys.</p>
+
+<p>The first problem is that we need an event that allows key repeating; i.e. if the user keeps the arrow
+keys depressed, the event should fire again and again, so that the dragged element keeps moving. By ancient custom
+we use the keypress event for this function.</p>
+
+<p>Unfortunately IE does not fire the keypress event on arrow keys. That problem is partly offset by the
+fact that the keydown event in IE fires repeatedly. So superficially it seems as if we have to use keydown.</p>
+
+<p>As you might have guessed it's not that simple. In Opera and Safari
+1.3 the keydown does not repeat; so if the
+user keeps the key depressed, nothing happens after the first movement.
+In these browsers we therefore need keypress. (Mozilla and Safari
+3 allow repeating both onkeydown and onkeypress; by far the most
+civilised solution as far as I'm concerned.)</p>
+
+<p>So ideally we use the keypress event; if it's not supported we use the keydown event. But how do we switch events?
+How do we know if the keypress event is enabled?</p>
+
+<p>My solution is to set an event handler for the keypress event. If this handler is executed, keypress is
+obviously supported and we can safely switch key events.</p>
+
+<p>The <code>startDragKeys</code> function sets event handlers for keydown and keypress:</p>
+
+<pre style="margin-right: -625px;">addEventSimple(document,'keydown',dragDrop.dragKeys);
+addEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+</pre>
+
+<p>Initially the keydown event triggers the <code>dragKeys</code> function which performs the actual
+dragging. This very first event always fires, and the element always moves. However, if we did nothing more,
+the element would stop moving in Opera and Safari 1.3 .</p>
+
+<p>That's why we also need keypress. The first keypress event triggers the <code>switchKeyEvents</code> function,
+which rearranges the event handlers:</p>
+
+<pre style="margin-right: -625px;">switchKeyEvents: function () {
+	removeEventSimple(document,'keydown',dragDrop.dragKeys);
+	removeEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+	addEventSimple(document,'keypress',dragDrop.dragKeys);
+},
+</pre>
+
+<p>It removes the event handlers we just set and adds a new one: <code>dragKeys</code> now fires on the
+the keypress event instead of the keydown event. Since this function is only executed in browsers that
+support keypress, we have switched key events from keydown to keypress only in these browsers.</p>
+
+<h4 id="link16">Initialising the key script</h4>
+
+<p>When the user activates the link in the corner of the draggable element, <code>startDragKeys</code>
+is  called.</p>
+
+<pre style="margin-right: -625px;">startDragKeys: function () {
+	dragDrop.startDrag(this.relatedElement);
+	dragDrop.dXKeys = dragDrop.dYKeys = 0;
+	addEventSimple(document,'keydown',dragDrop.dragKeys);
+	addEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+	this.blur();
+	return false;
+},
+</pre>
+
+<p>First it calls the <code>startDrag</code> function we already discussed. It sends the <code>relatedElement</code>
+to this function; a variable that contains a reference to the draggable element. (We set this variable in
+<code>initElement</code>.)</p>
+
+<p>Then it sets the <code>dXKeys</code> and <code>dYKeys</code> variables to 0; these variables will keep
+track of the change of position of the element.</p>
+
+<p>Then the event handlers are set as discussed above.</p>
+
+<p>Then (and this is a bit of a hack) it removes the focus from the link the user just clicked. I do this
+because of the Enter keystroke with which the user can release the dragged element. If I didn't remove the
+focus and the user hits Enter, the element is released, but immediately afterwards a click event would take
+place on the link, and the element would again be switched to drag mode. The net result would be that it's
+impossible to release the element by pressing Enter. If we remove the focus from the link, this problem disappears.</p>
+
+<p>Finally it returns <code>false</code> because the keystroke the user uses to activate the element should
+not perform its default function (i.e. the Enter should not cause the link to be followed).</p>
+
+<h4 id="link17">Dragging by keystrokes</h4>
+
+<p>The function <code>dragKeys</code> is responsible for the dragging by keystrokes.
+
+</p><pre style="margin-right: -625px;">dragKeys: function(e) {
+	var evt = e || window.event;
+	var key = evt.keyCode;
+</pre>
+
+<p>We start by reading out the code of the key the user pressed. (See also the <a href="http://www.quirksmode.org/js/keys.html">Detecting keystrokes</a>
+page.)</p>
+
+<p>Then we use a <code>switch</code> statement (see section 5H of <a href="http://www.quirksmode.org/book/">the book</a>) to decide
+what we need to do about the keystroke. Purpose of this part of the script is to update <code>dXKeys</code> and <code>dYKeys</code>,
+which contain the number of pixels the element has moved since the start of the drag and drop.</p>
+
+<pre style="margin-right: -625px;">	switch (key) {
+		case 37:	// left
+		case 63234:
+			dragDrop.dXKeys -= dragDrop.keySpeed;
+			break;
+		case 38:	// up
+		case 63232:
+			dragDrop.dYKeys -= dragDrop.keySpeed;
+			break;
+		case 39:	// right
+		case 63235:
+			dragDrop.dXKeys += dragDrop.keySpeed;
+			break;
+		case 40:	// down
+		case 63233:
+			dragDrop.dYKeys += dragDrop.keySpeed;
+			break;
+</pre>
+
+<p>The author sets the amount of pixels per keypress event in the <code>keySpeed</code> variable. When the user
+presses the left arrow, this amount is subtracted from <code>dXKeys</code>, when he presses the right arrow
+it's added. The same goes for up and down: then <code>dYKeys</code> is adjusted.</p>
+
+<span class="ssSpan">Screenshot: Clarification of key movement</span><img src="dragdrop_files/dragdrop_keyMove.gif" class="screenshot" alt="Clarification of key movement">
+
+<p>The script also contains the cases 63232-63235. These are for Safari 1.3, which doesn't use the normal
+<code>keyCodes</code> 37-40 for the arrow keys. (Safari 3 does, by the way.)</p>
+
+<pre style="margin-right: -625px;">		case 13: 	// enter
+		case 27: 	// escape
+			dragDrop.releaseElement();
+			return false;
+</pre>
+
+<p>If the user presses Enter or Escape the element is released (see below) and the function ends.
+If you wish to change the keys that release the element, add their <code>keyCodes</code> here.</p>
+
+<pre style="margin-right: -625px;">		default:
+			return true;
+	}
+</pre>
+
+<p>If the user presses any other key, the event is allowed to take its default action (i.e. the thing that would normally
+happen when that key is pressed) and the function ends.</p>
+
+<pre style="margin-right: -625px;">	dragDrop.setPosition(dragDrop.dXKeys,dragDrop.dYKeys);
+</pre>
+
+<p>Now <code>dXKeys</code> or <code>dYKeys</code> is updated, and we send both to the <code>setPosition</code>
+function that changes the position of the dragged element.</p>
+
+<pre style="margin-right: -625px;">	if (evt.preventDefault)
+		evt.preventDefault();
+	return false;
+},
+</pre>
+
+<p>Finally we have to prevent the default action of the key press; i.e. if the user presses the down arrow,
+the page should not scroll down. This is done by calling the <code>preventDefault</code> method of the event
+in W3C compliant browsers, and by returning <code>false</code> in IE.</p>
+
+<h3 id="link18">Releasing the element</h3>
+
+<p>When the user releases the element, <code>releaseElement</code> is called. It removes all event handlers
+the script might have set, removes the class "dragged", wipes the <code>draggedObject</code> and waits for
+new user actions.</p>
+
+<pre style="margin-right: -625px;">releaseElement: function() {
+	removeEventSimple(document,'mousemove',dragDrop.dragMouse);
+	removeEventSimple(document,'mouseup',dragDrop.releaseElement);
+	removeEventSimple(document,'keypress',dragDrop.dragKeys);
+	removeEventSimple(document,'keypress',dragDrop.switchKeyEvents);
+	removeEventSimple(document,'keydown',dragDrop.dragKeys);
+	dragDrop.draggedObject.className = dragDrop.draggedObject.className.replace(/dragged/,'');
+	dragDrop.draggedObject = null;
+}
+</pre>
+
+<p>You probably want to do something with the element once the user releases it. You can add your own
+function calls to the end of this function.</p>
+
+<div id="footer">
+<a href="http://www.quirksmode.org/index.html">Home</a>
+<a href="http://www.quirksmode.org/sitemap.html">Sitemap</a>
+<a href="http://www.quirksmode.org/contact.html">Contact</a>
+<a href="http://www.quirksmode.org/about/copyright.html">Copyright</a><br>
+<a href="http://www.quirksmode.org/book/">Buy my book</a>
+
+<p class="conference">
+<a href="http://fronteers.nl/"><img src="dragdrop_files/fronteers-180x60.png" alt="Fronteers"></a>
+</p><p class="smaller" id="validation">Invalid XHTML 1.0 because the table uses <code>wbr</code>.</p></div>
+</body></html>

@@ -1,0 +1,5 @@
+Store-1:
+Backup\2012\03\sofav\diigo_movie\*.mp4
+
+Store-2:
+Sina-vdisk/leakon/diigo/*.rar

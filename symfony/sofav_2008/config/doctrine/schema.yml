@@ -1,0 +1,186 @@
+---
+Item: 
+  tableName: items
+  columns: 
+    id: 
+      unsigned: 0
+      primary: true
+      notnull: true
+      autoincrement: true
+      type: integer(4)
+    user_id: 
+      unsigned: 0
+      primary: false
+      default: 0
+      notnull: true
+      autoincrement: false
+      type: integer(4)
+    created_time: 
+      unsigned: 0
+      primary: false
+      default: 0
+      notnull: true
+      autoincrement: false
+      type: integer(4)
+    private: 
+      unsigned: 0
+      primary: false
+      default: 0
+      notnull: true
+      autoincrement: false
+      type: integer(1)
+    url_sign: 
+      fixed: true
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(32)
+    url: 
+      fixed: false
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(2147483647)
+    title: 
+      fixed: false
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(2147483647)
+    description: 
+      fixed: false
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(2147483647)
+Session: 
+  tableName: session
+  columns: 
+    id: 
+      unsigned: 0
+      primary: true
+      notnull: true
+      autoincrement: true
+      type: integer(4)
+    sess_time: 
+      unsigned: 0
+      primary: false
+      default: 0
+      notnull: true
+      autoincrement: false
+      type: integer(4)
+    sess_id: 
+      fixed: true
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(32)
+    sess_data: 
+      fixed: false
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(2147483647)
+Tab: 
+  tableName: tabs
+  columns: 
+    id: 
+      unsigned: 0
+      primary: true
+      notnull: true
+      autoincrement: true
+      type: integer(4)
+    user_id: 
+      unsigned: 0
+      primary: false
+      default: 0
+      notnull: true
+      autoincrement: false
+      type: integer(4)
+    title: 
+      fixed: true
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(255)
+Tag: 
+  tableName: tags
+  columns: 
+    id: 
+      unsigned: 0
+      primary: true
+      notnull: true
+      autoincrement: true
+      type: integer(4)
+    created_time: 
+      unsigned: 0
+      primary: false
+      default: 0
+      notnull: true
+      autoincrement: false
+      type: integer(4)
+    user_id: 
+      unsigned: 0
+      primary: false
+      default: 0
+      notnull: true
+      autoincrement: false
+      type: integer(4)
+    title: 
+      fixed: true
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(255)
+User: 
+  tableName: users
+  columns: 
+    id: 
+      unsigned: 0
+      primary: true
+      notnull: true
+      autoincrement: true
+      type: integer(4)
+    created_time: 
+      unsigned: 0
+      primary: false
+      default: 0
+      notnull: true
+      autoincrement: false
+      type: integer(4)
+    username: 
+      fixed: true
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(30)
+    password: 
+      fixed: true
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(32)
+    nickname: 
+      fixed: true
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(255)
+    email: 
+      fixed: true
+      primary: false
+      default: 
+      notnull: true
+      autoincrement: false
+      type: string(255)

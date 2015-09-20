@@ -1,0 +1,1 @@
+See: http://leakon.googlecode.com/svn/trunk/leakon/javascript/fixed_pic_scroll/

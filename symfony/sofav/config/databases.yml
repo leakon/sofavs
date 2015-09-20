@@ -1,0 +1,6 @@
+all:
+  propel:
+    class:          sfPropelDatabase
+    param:
+      dsn:          mysql://root:123456@localhost/sofav
+ encoding:          utf8

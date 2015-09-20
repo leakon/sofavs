@@ -1,0 +1,18 @@
+
+Firefox Button Script
+====begin
+javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('src','http://friendfeed.com/share/bookmarklet/javascript');document.body.appendChild(e)})())
+====end
+
+
+Request List
+
+1.	http://friendfeed.com/share/bookmarklet/javascript
+2.	https://friendfeed.com/share/bookmarklet/frame#title=Leakon&url=http%3A%2F%2Fdev2.sofav.com%2Faccounts%2Flogin&selection=
+3.	https://friendfeed.com/static/css/base.css?v=22800c3fa5ae2b6264947bd6919e1f62
+4.	https://friendfeed.com/static/images/logo-small.png?v=1a8a38ee088024e60e315eb8a54fa121
+5.	http://friendfeed.com/static/images/icons/friendfeedservice.png?v=1
+6.	https://friendfeed.com/static/images/quote.png?v=c3b6798af3b1db86c981e5b66f98c356
+7.	https://friendfeed.com/static/images/loading.gif?v=3bca30a6374ff137de90adf4fdcd939e
+8.	https://friendfeed.com/static/javascript/jquery.js?v=feda998d94b90557a4833f58f59af155
+9.	https://friendfeed.com/static/javascript/base.js?v=2908b6a820067b60b49c2022181c7460

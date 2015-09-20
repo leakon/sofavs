@@ -1,0 +1,84 @@
+<link href="http://www.9fav.com/stylesheets/fav.css?rea=0.8722652941866536" type="text/css" rel="stylesheet" id="fav_bookmark_style">
+<div style="display: none;" id="fav_bookmark_loading">
+Loading...
+</div>
+<div style="" id="fav_bookmark_wraper">
+<div id="fav_bookmark_container" _extended="true">
+<div id="fav_bookmark_main">
+<div style="border: 1px solid rgb(204, 204, 204);">
+<div class="fav_bookmark_title" id="fav_bookmark_drag_handle" _extended="true">
+收藏到
+  <img src="http://www.9fav.com/images/9fav_logo_small.gif" alt="收藏到 9fav.com">
+<a class="fav_bookmark_close_button" title="关闭窗口" onclick="javascript:FavBookmark.unLoad();return false;" href="javascript:void(0);">
+  <img src="http://www.9fav.com/images/close.gif" border="0">
+</a>
+</div>
+<div class="fav_bookmark_content" id="fav_bookmark_content">
+<form name="form_fav" onsubmit="FavBookmark.submitForm(this);return false" action="fav/doit?method=login">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<th>
+用户名或邮箱:
+</th>
+<td>
+  <input class="fav_inputField" id="fav_user_name" name="fav_login_user_name" size="30" type="text">
+</td>
+</tr>
+<tr>
+<th>
+密　码:
+</th>
+<td>
+  <input class="fav_inputField" id="fav_password" name="fav_login_password" size="30" type="password">
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;
+</td>
+<td>
+<span class="errorMessage">
+</span>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+  <input class="fav_bookmark_button" value="登录" type="submit">
+  <input class="fav_bookmark_button" onclick="FavBookmark.unLoad();" value="关闭" type="button">
+<a title="立即注册 9fav.com 帐号" href="http://www.9fav.com/user/register" target="_blank">
+立即注册
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+  <input id="user_url_name" name="fav_user_url[name]" value="Leakon" type="hidden">
+  <input id="user_url_url" name="fav_user_url[url]" value="http://dev2.sofav.com/accounts/login" type="hidden">
+  <input id="user_url_des" name="fav_user_url[des]" type="hidden">
+</form>
+</div>
+<div id="fav_bookmark_footer">
+  <img id="fav_bookmark_s_loading" src="http://www.9fav.com/images/s_loading.gif" style="display: none;">
+<span id="fav_bookmark_post_loading" style="display: none;" _extended="true">
+Loading...
+</span>
+Copyright 2007
+<a title="立即访问 9fav.com" href="http://www.9fav.com/" target="_blank">
+?www.9fav.com
+</a>
+</div>
+</div>
+</div>
+<iframe id="fav_bookmark_cover" style="left: 0px; width: 400px; top: 0px; height: 172px;" src="about:blank" _extended="true">
+</iframe>
+</div>
+</div>
+<script src="http://www.9fav.com/javascripts/prototype.js" charset="utf-8" type="text/javascript">
+</script>
+<script src="http://www.9fav.com/javascripts/effects.js" charset="utf-8" type="text/javascript">
+</script>
+<script src="http://www.9fav.com/javascripts/dragdrop.js" charset="utf-8" type="text/javascript">
+</script>

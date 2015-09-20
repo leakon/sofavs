@@ -1,0 +1,1 @@
+IE6/7、Chrome、Firefox、Safari、Opera均支持的浏览器copy剪贴板，swf 发到了 gmail 邮箱，sofav teacher 里也有备份 (ZeroClipboard.swf)

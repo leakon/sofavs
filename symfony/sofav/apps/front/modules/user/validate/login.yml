@@ -1,0 +1,11 @@
+methods:
+  post: [username, password]
+
+names:
+  username:
+    required:     true
+    required_msg: 请输入用户名
+
+  password:
+    required:     true
+    required_msg: 请输入密码

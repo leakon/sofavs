@@ -1,0 +1,125 @@
+/*--Powered by:5 CreateDate:2012-12-30 21:03:20--*/
+/*==========CSSÃû³Æ£º¹«°²À¶É«°æ==========*/
+body{margin:0px;padding:0px;font-size:12px;background:url(bg.gif);background-color:#003366;}
+div,form,img,ul,ol,li,dl,dt,dd {margin: 0; padding: 0; border: 0; }
+li{list-style-type:none;}
+a:link{color:#333333;text-decoration:none;}
+a:visited{color:#333333;text-decoration:none;}
+a:hover{color:#ff3300;}
+.red a:link{color:#cc0000;}
+.red a:visited{color:#cc0000;}
+.red a:hover{color:#ff3300;}
+.blue a:link{color:#003399;}
+.blue a:visited{color:#003399;}
+.blue a:hover{color:#ff3300;}
+.clear{clear:both;height:1px;line-height:1px;}
+/*Í·²¿*/
+.head{width:1002px;margin:0px auto;background:#ffffff;}
+.head .menuBox{height:25px;padding-top:6px;text-align:center;width:1002px;background:url(BgStyle.gif) 0px 0px repeat-x;background-color:#005AF3;margin:0px auto;}
+.head .menuBox table{text-align:center;}
+.head .menuBottom{height:10px;background:url(BgStyle.gif) 0px -591px repeat-x;background-color:#F3F5F5;}
+.head .userLogin{width:962px;height:28px;padding:3px 20px 0px 20px;background:url(BgStyle.gif) 0px -1500px repeat-x;background-color:#ffffff;}
+.head .userLogin .right{float:right;}
+.head .userLogin .left{float:left;width:600px;}
+.head .logo{height:150px;}
+.homeTop{width:1002px;margin:0px auto;height:27px;background:url(BgStyle.gif) 0px -601px repeat-x;background-color:#F3F5F5;}
+/*ÉÏÃæ*/
+.mainBox{width:1002px;margin:0px auto;background:#ffffff;}
+
+
+.mainBoxLeft{float:left;width:788px;height:668px;overflow:hidden;}
+.mainLeft{float:left;with:333px;padding:10px 10px 0px 10px;}
+.mainCen{float:left;width:433px;padding-top:10px;}
+
+.ad{padding:6px 0px 0px 10px;}
+
+.picFlash{width:311px;height:267px;padding:10px;background:#ffffff;background:url(BgStyle.gif) -671px -44px no-repeat;}
+.tvBox{width:333px;padding-top:10px;}
+.tvBox .right{float:right;padding-right:20px;}
+.tvBox .right a{color:#ffffff;display:inline;}
+.tvBox .tvTitle{height:19px;padding-top:12px;background:url(BgStyle.gif) 0px -44px no-repeat;text-align:left;color:#ffffff;text-indent:36px;font-weight:bold;}
+.tvBox .tvCont{height:208px;border-left:1px #CCCCCC solid;border-right:1px #CCCCCC solid;padding:10px 10px 10px 5px;width:316px;font-size:14px;text-align:left;}
+.tvBox .tvBottom{height:6px;background:url(BgStyle.gif) 0px -92px no-repeat;}
+
+.topNews{width:433px;height:297px;background:url(BgStyle.gif) 0px -950px no-repeat;}
+.topNewsTitle{text-align:center;font-size:22px;font-weight:bold;height:30px;padding:25px 0px 15px 20px}
+.topNewsTitle a:link{color:#CC0000;text-decoration:none;}
+.topNewsTitle a:visited{color:#CC0000;text-decoration:none;}
+
+.cenNews{padding:0px 5px;font-size:12px;}
+.bottomNewsTitle{width:425px;height:36px;background:url(BgStyle.gif) 0px -115px no-repeat;}
+.bottomNewsTitle ul{padding-left:35px;}
+
+.bottomNewsTitle li{float:left;cursor:hand;font-size:12px;font-weight:bold;}
+.bottomNewsTitle .title_On{width:79px;height:36px;line-height:32px;text-align:center;background:url(BgStyle.gif) 0px -162px no-repeat;color:#ffffff;}
+.bottomNewsTitle .title_Off{width:79px;height:36px;line-height:32px;text-align:center;background:url(BgStyle.gif) -118px -162px no-repeat;color:#1F376D;}
+.bottomNews{width:425px;font-size:14px;padding-top:6px;}
+
+.rightNews{float:right;width:214px;height:666px;background:url(rightBg.jpg) no-repeat;color:#ffffff;}
+.rightNews a{color:#ffffff;}
+.rightNewsTitle{width:180px;margin:0px auto;height:20px;padding-top:15px;border-bottom:1px #efefef solid;font-size:14px;font-weight:bold;text-indent:15px;text-align:left;}
+.rightNewsBox{width:170px;margin:0px auto;height:170px;padding-top:15px;padding-left:10px;}
+.zhiban{width:180px;margin:0px auto;height:200px;padding-top:12px;padding-bottom:15px;}
+.zhiban ul{}
+.zhiban .zLeft{width:100px;float:left;text-align:right;}
+.zhiban .zRight{width:80px;float:right;text-align:left;}
+.zhiban li{height:22px;line-height:22px;}
+
+
+/*Í¼Æ¬ÐÂÎÅ*/
+.picBox{width:981px;height:69px;background:url(BgStyle.gif) 0px -355px no-repeat;margin:0px auto;margin-top:6px;}
+.picBottom{width:981px;height:15px;background:url(BgStyle.gif) 0px -463px no-repeat;margin:0px auto;margin-bottom:5px;}
+.picCen{width:979px;height:366px;border-left:1px #CCCCCC solid;border-right:1px #CCCCCC solid;margin:0px auto;}
+
+.picRight{float:right;width:616px;padding-right:15px;}
+.picBox2{width:616px;background:url(BgStyle.gif) 0px -643px no-repeat;}
+.picBox2 .picTitle{height:26px;line-height:26px;font-size:14px;font-weight:bold;text-indent:35px;color:#333333;text-align:left;text-indent:35px;}
+.picBox2 .picTitle .right{float:right;padding-right:20px;font-size:12px;font-weight:normal;}
+.picBox2 .picShow{height:130px;padding:10px 0px;}
+
+.picLeft{float:left;width:330px;padding-left:15px;}
+.picBox3{width:300px;height:330px;border:1px #E7E7E7 solid;padding:10px;}
+
+.phoshow{width:124px;height:97px;background:url(BgStyle.gif) -866px -643px no-repeat;padding:6px;}
+.photitle{height:26px;line-height:26px;text-align:center;}
+/*ÐÂÎÅÇøÓò*/
+.newsLeft{float:left;width:795px;}
+.newsBox{float:left;width:382px;height:217px;padding:0px 0px 8px 10px;overflow:hidden;font-size:14px;}
+.newsBox .right{float:right;padding-right:10px;padding-top:10px;}
+.newsBox .newsTitle{width:382px;height:30px;line-height:30px;background:url(BgStyle.gif) 0px -494px no-repeat;font-weight:bold;text-align:left;text-indent:35px;}
+.newsBox .newsCen{width:365px;height:160px;border-left:1px #CCCCCC solid;border-right:1px #CCCCCC solid;overflow:hidden;padding:10px 10px 10px 5px;}
+.newsBox .newsBottom{width:382px;height:7px;background:url(BgStyle.gif) 0px -559px no-repeat;}
+/*×¨Ìâ¡¢ÔÚÏßÍ¶Æ±*/
+.newsright{float:left;width:195px;background:#E7F3FF;}
+.specialTitle{width:195px;height:28px;line-height:28px;text-align:left;background:url(BgStyle.gif) -245px -162px no-repeat;background-color:#0066CC;color:#ffffff;text-indent:22px;font-weight:bold;font-size:14px;}
+.specialBox{padding:10px;text-align:left;line-height:22px;}
+.specialPic{padding:10px 5px;}
+/*³ÌÐòÖÐµÄÑùÊ½*/
+.line-i{line-height:24px;}
+.loginInput{border:1px #666666 solid;width:70px;height:18px;}
+.rightBox{border:1px #0066CC solid;}
+.rightTitle{font-size:14px;color:#ffffff;font-weight:bold;}
+.mBottom{margin-bottom:10px;}
+.rightMenuTop{background:#0066CC;}
+.rigthBoxTop{margin-top:10px;}
+.rightMenu{width:233px;height:34px;background:url(rightMenu_on.gif) no-repeat;background-color:#ffffcc;text-align:left;font-size:14px;font-weight:bold;line-height:34px;text-indent:40px;display:block;margin:5px auto;}
+.rightMenu a{color:#cc3300;text-decoration:none;display:block;}
+.rightMenu a:link{color:#cc3300;text-decoration:none;display:block;}
+.rightMenu a:visited{color:#cc3300;text-decoration:none;display:block;}
+.rightMenu a:hover{color:#ff0000;text-decoration:underline;display:block;background:url(rightMenu_off1.gif) no-repeat;}
+.hotnews{
+	background-image: url(rightTop.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+margin:10px; 10px 10px 5px;
+padding-left:20px;
+}
+.hotnews a:link{color:#003399;}
+.hotnews a:visited{color:#003399;}
+.fontS{font-size:12px;font-weight:normal;}
+.foot{height:113px;background-color:#0066CC;background:url(footBg.gif);color:#ffffff;line-height:24px;}
+.foot a{color:#ffffff;}
+.linkBox{width:940px;height:90px;background:url(BgStyle.gif) 0px -1371px no-repeat;margin:0px auto;padding-left:40px;padding-top:10px;}
+.kf{width:97px;height:95px;background:url(kf.png) 0px 0px no-repeat;position:fixed;left:50%;top:190px;z-index:2;margin-left:505px;padding-top:86px;text-align:center;}
+.kf a{width:72px;line-height:21px;display:inline-block;margin-bottom:10px;}
+/*--Copyright 2006 zf11.com .All Rights Reserved--*/

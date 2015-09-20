@@ -1,0 +1,18 @@
+
+Firefox Button Script
+====begin
+javascript:{var o=document.createElement('scri'+'pt');o.setAttribute('src','http://www.9fav.com/fav/starter?url='+encodeURIComponent(location.href));o.setAttribute('id','fav_bookmark_scripts');o.setAttribute('type','text/javascript');o.setAttribute('charset', 'utf-8');document.body.appendChild(o);void(0);}
+====end
+
+
+Request List
+
+1.	http://www.9fav.com/fav/starter?url=http%3A%2F%2Fdev2.sofav.com%2Faccounts%2Flogin
+2.	http://www.9fav.com/fav/starter?start=true&url=http%3A%2F%2Fdev2.sofav.com%2Faccounts%2Flogin
+3.	http://www.9fav.com/stylesheets/fav.css?rea=0.22391673056821892
+4.	http://www.9fav.com/javascripts/prototype.js
+5.	http://www.9fav.com/javascripts/effects.js
+6.	http://www.9fav.com/javascripts/dragdrop.js
+7.	http://www.9fav.com/fav/doit?wraper=true&method=show&fav_user_url[name]=Leakon&fav_user_url[url]=http%3A%2F%2Fdev2.sofav.com%2Faccounts%2Flogin&fav_user_url[des]=
+
+

@@ -1,0 +1,86 @@
+﻿<form id="post" name="post" action="/post" method="post">
+<input type="hidden" name="act" value="save" />
+	
+<table cellspacing="0" cellpadding="0" border="0">
+<tr>
+	<td> 
+		title
+	</td>
+	<td>
+		<input type="text" size="50" name="ftitle" value="<{$ftitle|htmlspecialchars}>" />
+	</td>
+</tr>
+<tr>
+	<td> 
+		href
+	</td>
+	<td>
+		<input type="text" size="50" name="furl" value="<{$furl|htmlspecialchars}>" />
+	</td>
+</tr>
+<tr>
+	<td> 
+		tags1
+	</td>
+	<td>
+		<input type="text" size="50" name="ftags_array[]" value="<{$ftags_array[0]|htmlspecialchars}>" />
+	</td>
+</tr>
+<tr>
+	<td> 
+		tags2
+	</td>
+	<td>
+		<input type="text" size="50" name="ftags_array[]" value="<{$ftags_array[1]|htmlspecialchars}>" />
+	</td>
+</tr> 
+<tr>
+	<td> 
+		tags3
+	</td>
+	<td>
+		<input type="text" size="50" name="ftags_array[]" value="<{$ftags_array[2]|htmlspecialchars}>" />
+	</td>
+</tr> 
+<tr>
+	<td> 
+		tags4
+	</td>
+	<td>
+		<input type="text" size="50" name="ftags_array[]" value="<{$ftags_array[3]|htmlspecialchars}>" />
+	</td>
+</tr>
+<tr>
+	<td> 
+		tags5
+	</td>
+	<td>
+		<input type="text" size="50" name="ftags_array[]" value="<{$ftags_array[4]|htmlspecialchars}>" />
+	</td>
+</tr>
+<tr>
+	<td> 
+		note
+	</td>
+	<td>
+		<textarea cols="50" rows="8" name="fnote"><{$fnote|htmlspecialchars}></textarea>
+	</td>
+</tr>
+<tr>
+	<td> 
+		private
+	</td>
+	<td>
+		<label for="fprivate"><input type="checkbox" id="fprivate" name="fprivate" value="1" <{if $fprivate == 1}>checked="checked"<{/if}> />私有收藏</label>
+	</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+		<input type="submit" value="保存" />
+	</td>
+</tr>
+</table>
+	
+	
+</form>

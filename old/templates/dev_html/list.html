@@ -1,0 +1,14 @@
+﻿
+<div id="list">
+<ul>
+<{foreach name=list key=idx item=val from=$list}>
+	<li>
+		<span class="title"><a href="<{$val.furl}>" target="_blank"><{$val.ftitle}></a></span><br />
+		<span class="datetime"><{$val.finsttime|date_format:"%Y-%m-%d %H:%M"}></span>
+		<{if strlen($val.ftags)}><span class="tags"><{$val.ftags}></span><{/if}><br />
+		<{if strlen($val.fnote)}><span class="note"><{$val.fnote}></span><br /><{/if}>
+		<span class="url"><{$val.furl}></span>
+	</li>
+<{/foreach}>
+</ul>
+</div>

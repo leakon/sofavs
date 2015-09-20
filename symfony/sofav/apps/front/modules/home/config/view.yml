@@ -1,0 +1,42 @@
+dialogSuccess:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        Sofav
+    robots:       index, follow
+    description:  网址导航, 网址收藏, 网址站, 网址大全, 导航, 收藏夹, 个性主页
+    keywords:     网址导航, 网址收藏, 网址站, 网址大全, 导航, 收藏夹, 个性主页
+    language:     en
+
+  stylesheets:    [-*]
+
+  javascripts:    [main]
+
+  has_layout:     off
+  layout:         layout
+
+dialogDivSuccess:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        Sofav
+    robots:       index, follow
+    description:  网址导航, 网址收藏, 网址站, 网址大全, 导航, 收藏夹, 个性主页
+    keywords:     网址导航, 网址收藏, 网址站, 网址大全, 导航, 收藏夹, 个性主页
+    language:     en
+
+  stylesheets:    [-*]
+
+  javascripts:    [main]
+
+  has_layout:     off
+  layout:         layout
+
+dialogStyleSuccess:
+  http_metas:
+    content-type: text/css
+  stylesheets:    [-*]
+  javascripts:    [main]
+  has_layout:     off

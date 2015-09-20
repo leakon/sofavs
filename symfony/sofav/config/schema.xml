@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="propel" defaultIdMethod="native" noXsd="true" package="lib.model">
+
+<!-- 收藏链接 -->
+  <table name="posts" phpName="Post" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="user_id" type="INTEGER" required="true" default="0" />
+     <foreign-key foreignTable="users">
+       <reference local="user_id" foreign="id"/>
+     </foreign-key>
+    <column name="is_private" type="TINYINT" required="true" default="0" />
+    <column name="title" type="VARCHAR" size="255" required="true" default="" />
+    <column name="url" type="VARCHAR" size="255" required="true" default="" />
+    <column name="tags" type="VARCHAR" size="255" required="true" default="" />
+    <column name="body" type="LONGVARCHAR" required="true" />
+    <column name="created_at" type="TIMESTAMP" required="true" default="0000-00-00 00:00:00" />
+    <column name="updated_at" type="TIMESTAMP" required="true" default="0000-00-00 00:00:00" />
+    <index name="user_id">
+      <index-column name="user_id" />
+    </index>
+    <unique name="url">
+      <unique-column name="url" />
+      <unique-column name="user_id" />
+    </unique>
+  </table>
+
+<!-- 收藏tag -->
+  <table name="tags" phpName="Tag" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="user_id" type="INTEGER" required="true" default="0" />
+     <foreign-key foreignTable="users">
+       <reference local="user_id" foreign="id"/>
+     </foreign-key>
+    <column name="tag" type="VARCHAR" size="255" required="true" default="" />
+    <unique name="user_id">
+      <unique-column name="user_id" />
+      <unique-column name="tag" />
+    </unique>
+    <index name="tag">
+      <index-column name="tag" />
+    </index>
+  </table>
+
+<!-- post 与 tag 对应关系 -->
+  <table name="post_tag" phpName="PostTag" idMethod="native">
+    <column name="post_id" type="INTEGER" required="true" default="0" />
+     <foreign-key foreignTable="posts">
+       <reference local="post_id" foreign="id"/>
+     </foreign-key>
+    <column name="tag_id" type="INTEGER" required="true" default="0" />
+     <foreign-key foreignTable="tags">
+       <reference local="tag_id" foreign="id"/>
+     </foreign-key>
+    <unique name="post_tag">
+      <unique-column name="post_id" />
+      <unique-column name="tag_id" />
+    </unique>
+    <index name="tag_id">
+      <index-column name="tag_id" />
+    </index>
+  </table>
+
+
+  <table name="tabs" phpName="Tab" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="user_id" type="INTEGER" required="true" default="0" />
+     <foreign-key foreignTable="users">
+       <reference local="user_id" foreign="id"/>
+     </foreign-key>
+    <column name="name" type="VARCHAR" size="255" required="true" default="" />
+    <column name="options" type="LONGVARCHAR" required="true" />
+    <index name="user_id">
+      <index-column name="user_id" />
+    </index>
+    <index name="name">
+      <index-column name="name" />
+    </index>
+  </table>
+
+<!-- 评论 -->
+  <table name="comments" phpName="Comment" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="post_id" type="INTEGER" required="true" default="0" />
+     <foreign-key foreignTable="posts">
+       <reference local="post_id" foreign="id"/>
+     </foreign-key>
+    <column name="digg" type="INTEGER" required="true" default="0" />
+    <column name="body" type="LONGVARCHAR" required="true" />
+    <column name="created_at" type="TIMESTAMP" required="true" default="0000-00-00 00:00:00" />
+    <index name="post_id">
+      <index-column name="post_id" />
+    </index>
+    <index name="digg">
+      <index-column name="digg" />
+    </index>
+  </table>
+
+<!-- 用户信息 -->
+  <table name="users" phpName="User" idMethod="native">
+    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="username" type="VARCHAR" size="255" required="true" default="" />
+    <column name="password" type="VARCHAR" size="255" required="true" default="" />
+    <column name="options" type="LONGVARCHAR" required="true" />
+    <column name="created_at" type="TIMESTAMP" required="true" default="0000-00-00 00:00:00" />
+    <unique name="username">
+      <unique-column name="username" />
+    </unique>
+  </table>
+
+</database>

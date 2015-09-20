@@ -1,0 +1,130 @@
+---
+propel: 
+  _attributes: 
+    package: lib.model
+  items: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    user_id: 
+      type: INTEGER
+      required: true
+      default: 
+    created_time: 
+      type: INTEGER
+      required: true
+      default: 
+    private: 
+      type: TINYINT
+      required: true
+      default: 
+    url_sign: 
+      type: CHAR
+      size: 32
+      required: true
+      default: 
+    url: 
+      type: LONGVARCHAR
+      required: true
+    title: 
+      type: LONGVARCHAR
+      required: true
+    description: 
+      type: LONGVARCHAR
+      required: true
+    _indexes: 
+      url_sign: 
+        - url_sign
+  session: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    sess_time: 
+      type: INTEGER
+      required: true
+      default: 
+    sess_id: 
+      type: CHAR
+      size: 32
+      required: true
+      default: 
+    sess_data: 
+      type: LONGVARCHAR
+      required: true
+    _indexes: 
+      sess_time: 
+        - sess_time
+    _uniques: 
+      sess_id: 
+        - sess_id
+  tags: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    created_time: 
+      type: INTEGER
+      required: true
+      default: 
+    user_id: 
+      type: INTEGER
+      required: true
+      default: 
+    title: 
+      type: CHAR
+      size: 255
+      required: true
+      default: 
+    _indexes: 
+      user_id: 
+        - user_id
+    _uniques: 
+      title: 
+        - title
+        - user_id
+  users: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    created_time: 
+      type: INTEGER
+      required: true
+      default: 
+    username: 
+      type: CHAR
+      size: 30
+      required: true
+      default: 
+    password: 
+      type: CHAR
+      size: 32
+      required: true
+      default: 
+    nickname: 
+      type: CHAR
+      size: 255
+      required: true
+      default: 
+    email: 
+      type: CHAR
+      size: 255
+      required: true
+      default: 
+    _uniques: 
+      username: 
+        - username

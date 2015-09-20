@@ -1,0 +1,105 @@
+
+# module tab 3 lines
+module_tab_full:
+  url:   /tab/:action/*
+  param: { module: tab }
+
+module_tab_action:
+  url:   /tab/:action
+  param: { module: tab }
+
+module_tab_default:
+  url:   /tab
+  param: { module: tab, action: index }
+
+
+# module accounts 3 lines
+module_accounts_full:
+  url:   /accounts/:action/*
+  param: { module: accounts }
+
+module_accounts_action:
+  url:   /accounts/:action
+  param: { module: accounts }
+
+module_accounts_default:
+  url:   /accounts
+  param: { module: accounts, action: index }
+
+
+
+
+
+
+# module home 3 lines
+module_home_full:
+  url:   /home/:action/*
+  param: { module: home }
+
+module_home_action:
+  url:   /home/:action
+  param: { module: home }
+
+module_home_default:
+  url:   /home
+  param: { module: home, action: index }
+
+
+
+
+
+
+
+
+
+
+# module item 3 lines
+module_item_full:
+  url:   /item/:action/*
+  param: { module: item }
+
+module_item_action:
+  url:   /item/:action
+  param: { module: item }
+
+module_item_default:
+  url:   /item
+  param: { module: item, action: index }
+
+
+
+user_tab:
+  url:   /:username/tab/:title
+  param: { module: tab, action: showTab }
+
+user:
+  url:   /:username/:module/:action/*
+
+user_module:
+  url:   /:username/:module
+  param: { action: index }
+#  requirements: {username: ^((?!accounts|home)\w)+$ }
+
+user_default:
+  url:   /:username
+  param: { module: accounts, action: manage }
+#  requirements: {username: ^((?!accounts|home)\w)+$ }
+
+
+
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+default_symfony:
+  url:   /symfony/:action/*
+  param: { module: default }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

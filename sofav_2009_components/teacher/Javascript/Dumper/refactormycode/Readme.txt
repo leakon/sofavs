@@ -1,0 +1,1 @@
+http://refactormycode.com/codes/226-recursively-dump-an-object

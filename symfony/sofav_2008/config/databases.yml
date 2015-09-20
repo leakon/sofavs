@@ -1,0 +1,18 @@
+all:
+#  propel:
+#    class: sfPropelDatabase
+#    param:
+#      encoding: utf8
+#      dsn: mysql://root:123456@localhost/sofav_2008
+#
+#  connection_name:
+#    class:          sfDoctrineDatabase
+#    param:
+#      dsn:          mysql://root:123456@localhost/sofav_2008
+#      encoding:     utf8
+
+  sofav:
+    class:      sfSofavDatabase
+    param:
+      encoding: utf8
+      dsn:      mysql://root:123456@localhost:3306/sofav_2008?encoding=utf8

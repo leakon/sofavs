@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Consumer</title>
+        <script type="text/javascript" src="easyXDM.debug.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            
+            
+            var socket = new easyXDM.Socket(
+                {
+                    remote: "http://dev.mysofav.com/test/easyxdm/provider.html", // the path to the provider
+                    onMessage:function(message, origin) {
+                                //do something with message
+                                    
+                                }
+                }
+            );
+            
+            function sendMessage(msg) {
+                
+                var box = document.getElementById('messageBox');
+                
+                var msg = box.value;
+                
+//                alert(msg);
+//                return;
+                
+                socket.postMessage(msg);
+                
+            }
+            
+        </script>
+        
+        <h1>Send Message</h1>
+        
+        <textarea id="messageBox" style="width:240px; height:60px;"></textarea>
+        
+        <br />
+        
+        <input type="button" value="sendMessage" onclick="sendMessage()" />
+        
+        
+    </body>
+</html>

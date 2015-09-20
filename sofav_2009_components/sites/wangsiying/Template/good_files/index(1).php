@@ -1,0 +1,4 @@
+/*
+document.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"/wfile/css/style.css\" /><div class=\"vote\"><form name=\"myform\" id=\"myform\"  action=\"http://www.esjs.gov.cn/index.php?m=vote&c=index&a=post&subjectid=1\" method=\"post\" target=\"_blank\"><h4>2013年3月1日公布的房地产“国五条”明确提出了“依法严格按转让所得的20%计征个人所得税”等细化措施。你认为对本地的房地产市场有什么影响？</h4><input type=\"hidden\" name=\"subjectid\" value=\"1\"><label><input type=\"checkbox\" name=\"radio[]\" id=\"radio\" value=\"1\" />会有效抑制房价上涨，房租也会随之下跌</label><br /><label><input type=\"checkbox\" name=\"radio[]\" id=\"radio\" value=\"2\" />不能长效控制房价，仅短期效应</label><br /><label><input type=\"checkbox\" name=\"radio[]\" id=\"radio\" value=\"3\" />不能确定，有待观望</label><br /><div class=\"vbtn\" style=\"\"><div class=\"vb_c\"><input type=\"submit\" value=\"提交\"><a href=\"http://www.esjs.gov.cn/index.php?m=vote&c=index&a=show&show_type=1&subjectid=1&siteid=1\" target=\"_blank\">查看</a></div></div></form></div>");
+
+*/

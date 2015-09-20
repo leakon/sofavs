@@ -1,0 +1,42 @@
+methods:
+  post: [username, password, confirm]
+
+names:
+  username:
+    required:     true
+    required_msg: 必须有用户名才能注册
+    validators:   usernameValidator, userExistValidator
+
+  password:
+    required:     true
+    required_msg: 请输入密码
+    validators:   passwordValidator
+
+  confirm:
+    required:     true
+    required_msg: 请重复输入密码
+    validators:   passwordCompare
+
+usernameValidator:
+    class:        sfStringValidator
+    param:
+      min:        2
+      min_error:  有效的用户名至少要包含2个字符
+
+passwordValidator:
+    class:        sfStringValidator
+    param:
+      min:        6
+      min_error:  为了您的帐户安全，请至少输入6个字符作为密码
+
+passwordCompare:
+    class:            sfCompareValidator
+    param:
+      check:          password
+      compare_error:  您2次输入的密码不一致，请重新输入
+
+userExistValidator:
+    class:        UserValidator
+    param:
+      name:          username
+      exists_error:  用户名已经存在，请选择另一个名字

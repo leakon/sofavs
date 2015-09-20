@@ -1,0 +1,39 @@
+#fav_bookmark_loading, #fav_bookmark_wraper, #fav_bookmark_wraper * { text-indent: 0; letter-spacing: normal; word-spacing: normal; font-family: Arial, Tahoma, Verdana, Sans; font-size: 9pt; line-height: 20px; text-align: left; font-style: normal; font-weight: normal; padding: 0px; margin: 0px; text-align: left; color: #333; background: #fff; float: none; width: auto; height: auto; border: none; text-decoration: none; }
+#fav_bookmark_wraper a { text-decoration: underline; color: #039; }
+#fav_bookmark_wraper a:hover { color: #f30; }
+#fav_bookmark_wraper span.errorMessage { color: #c00;}
+
+#fav_bookmark_loading, #fav_bookmark_wraper{position:absolute;left:10px;top:10px;z-index:99999;display:block;}
+#fav_bookmark_loading { border:1px solid orange;color:orange;text-align:center;padding:0 10px;background:#fff;}
+
+#fav_bookmark_wraper {width:400px;}
+#fav_bookmark_wraper[id], #fav_bookmark_loading[id] {position:fixed !important;}
+#fav_bookmark_container {position:relative;width:410px;}
+#fav_bookmark_main{width:400px;border:solid 5px #eee;}
+#fav_bookmark_wraper #fav_bookmark_cover{display:none;width:100%;height:100%;}
+
+#fav_bookmark_wraper div.fav_bookmark_title{margin:1px;background:url("../images/header_bg.gif") repeat-x bottom;line-height:30px;height:30px;padding:0 10px;overflow: hidden; font-weight:bold; color:#369; position:relative; }
+#fav_bookmark_wraper div.fav_bookmark_title a.fav_bookmark_close_button{position: absolute;right: 5px;top:5px;border:1px solid #ccc;font-size:0px; line-height:0px;}
+#fav_bookmark_wraper div.fav_bookmark_title a.fav_bookmark_close_button:hover{ border-color: #CCC #999 #999 #CCC; }
+#fav_bookmark_wraper div.fav_bookmark_title span#user_id{position:absolute;right: 30px;line-height: 30px;background-color:transparent;color: green;}
+#fav_bookmark_wraper #fav_bookmark_content {margin: 5px;}
+
+#fav_bookmark_wraper #fav_bookmark_content form, #fav_bookmark_wraper #fav_bookmark_content form * {line-height:25px;}
+#fav_bookmark_wraper #fav_bookmark_content form th {vertical-align:top;padding:0 2px;width:80px;white-space:nowrap;text-transform:none}
+#fav_bookmark_wraper #fav_bookmark_content form th label{color:#369;display:block;font-weight: bold;}
+#fav_bookmark_wraper #fav_bookmark_content form input {border: none;}
+#fav_bookmark_wraper #fav_bookmark_content form .fav_inputField{border: 1px solid #ccc;width: 250px;padding:2px;line-height:1.2em;}
+#fav_bookmark_wraper #fav_bookmark_content input.fav_bookmark_button{ border:1px solid #999;border-right:4px solid #999;text-align:center;width:60px;margin-right:10px;background:#fff;height: 20px;line-height: 20px;}
+
+#fav_bookmark_wraper #fav_bookmark_content div.fav_bookmark_tags_selector a { text-decoration: none; margin-right: 5px; }
+#fav_bookmark_tags_selector a:hover { text-decoration: underline; }
+
+#fav_bookmark_wraper #fav_bookmark_content div.fav_bookmark_success { margin: 10px;padding-left: 50px; }
+#fav_bookmark_wraper #fav_bookmark_content div.fav_bookmark_success span.fav_bookmark_title { color: #F60; }
+
+#fav_bookmark_wraper #fav_bookmark_footer { padding: 2px; margin: 10px 5px 0px 5px; text-align: right; border-top: 1px dotted #CCC; color: #999; font-size: 8pt; }
+#fav_bookmark_wraper #fav_bookmark_footer #fav_bookmark_post_loading {background-color: #FFF; padding-left: 20px; font-size: 8pt; color: #F90; float: left; }
+
+#fav_bookmark_wraper #fav_bookmark_content span.color_category { border: 1px solid #CCC; width: 16px; height: 16px; display: block; float: left; margin-right: 5px; }
+#fav_bookmark_wraper #fav_bookmark_content select { border: 1px solid #CCC; }
+#fav_bookmark_wraper #fav_bookmark_content form .fav_inputarea{overflow:auto;width:280px;height:39px;line-height:20px;border:solid 1px #ccc}

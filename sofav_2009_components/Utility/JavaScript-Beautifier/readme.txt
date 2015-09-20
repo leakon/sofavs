@@ -1,0 +1,1 @@
+需要把 lib/JavaScript 目录 copy 到 bin/ 下

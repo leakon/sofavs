@@ -1,0 +1,16 @@
+/*
+3±Ì¡¥Ω”
+*/
+SELECT * FROM fav 
+LEFT JOIN fav_tag 
+ON fav.id = fav_tag.favid 
+LEFT JOIN tag 
+ON fav_tag.tagid = tag.id
+WHERE fav.id = 108
+
+SELECT * FROM fav 
+LEFT JOIN fav_tag 
+ON fav.id = fav_tag.favid 
+LEFT JOIN tag 
+ON fav_tag.tagid = tag.id
+WHERE fav.id in ( 10, 24, 324, 3, 57, 953, 68, 263, 1120 );

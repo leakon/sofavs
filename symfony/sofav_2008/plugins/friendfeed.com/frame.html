@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>FriendFeed - </title>
+<script type="text/javascript">
+var gPageStart = new Date();
+var gIsIphone = 0;
+
+</script>
+<!--[if IE]><style>
+div {
+height: 0;
+he\ight: auto;
+zoom: 1;
+}
+</style><![endif]-->
+
+<link href="/static/css/base.css?v=22800c3fa5ae2b6264947bd6919e1f62" rel="stylesheet" type="text/css"/>
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="FriendFeed Search"/>
+
+<style type="text/css">
+body {
+position: static;
+margin: 10px;
+}
+div {
+position: static;
+}
+html, body {
+height: auto;
+}
+#body {
+width: auto;
+padding: 0;
+margin: 0;
+position: relative;
+}
+.link, span.link {
+text-decoration: underline;
+color: #1030cc;
+cursor: pointer;
+}
+#you {
+font-weight: bold;
+}
+td {
+vertical-align: top;
+}
+#title {
+text-decoration: underline;
+color: #1030cc;
+}
+#title,
+#comment {
+width: 300px;
+text-align: left;
+}
+#comment {
+color:gray;
+}
+#media img {
+margin: 10px 10px 0px 0px;
+padding: 3px;
+border: 1px solid #d0d0d0;
+vertical-align: middle;
+cursor:pointer;
+cursor:hand;
+}
+#close {
+position: absolute;
+top: 0px;
+right: 0px;
+}
+#submit {
+font-weight:bold; color:#222222;
+}
+#title, #comment { padding-left:2px; }
+.loadingimg { display:none; margin-left:10px; }
+</style>
+
+</head>
+<body onload="analytics()">
+
+<div id="body">
+
+
+
+
+<div class="link" id="close">Close</div>
+<div style="margin-bottom:15px"><a target="_top" href="/"><img src="/static/images/logo-small.png?v=1a8a38ee088024e60e315eb8a54fa121" style="width:160px;height:34px"/></a></div>
+<div id="messagearea" class="errormessage" style="display: none; width: 375px"></div>
+<div id="sharediv">
+<form action="/" id="shareform">
+<input type="hidden" name="url"/>
+<table>
+<tr>
+<td style="padding-right:5px;padding-top:3px"><img src="http://friendfeed.com/static/images/icons/friendfeedservice.png?v=1" style="width:16px;height:16px"/></td>
+<td id="preview"><span class="link" id="you">You</span> shared <input name="title" id="title" maxlength="255" type="text"/></td>
+</tr>
+<tr><td></td><td><div id="media" style="overflow:hidden"></div></td></tr>
+<tr><td></td><td style="padding-top:0.5em"><img style="vertical-align:top;padding-top:4px;padding-right:1px" src="/static/images/quote.png?v=c3b6798af3b1db86c981e5b66f98c356"/> <textarea name="comment" id="comment" class="singleline"></textarea></td></tr>
+</table>
+<div style="margin-top:20px">
+
+<div style="color:gray">Click on images to share them</div>
+
+<div style="position:absolute;bottom:0;right:9px;"><img class="loadingimg" src="/static/images/loading.gif?v=3bca30a6374ff137de90adf4fdcd939e"/><input type="submit" value="Share on my FriendFeed" id="submit"/></div>
+</div>
+</form>
+</div>
+<div id="logindiv" style="display:none">
+<form action="/" id="loginform">
+<table class="form">
+<tr>
+<td class="label">Email</td>
+<td class="value"><input name="email" id="email" type="text" size="25"/></td>
+</tr>
+<tr>
+<td class="label">Password</td>
+<td class="value"><input name="password" id="password" type="password" size="25"/></td>
+<td style="padding-left: 5px; white-space: nowrap"><a href="/account/password" target="_blank">Forgot your password?</a></td>
+</tr>
+<tr id="rememberrow">
+<td></td>
+<td class="value"><input name="remember" id="remember" type="checkbox" checked="checked"/><label for="remember"> Remember me on this computer</label></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td class="buttons">
+<input type="submit" value="Sign in"/><img class="loadingimg" src="/static/images/loading.gif?v=3bca30a6374ff137de90adf4fdcd939e"/>
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+</div>
+
+<script src="/static/javascript/jquery.js?v=feda998d94b90557a4833f58f59af155" type="text/javascript"></script>
+
+<script src="/static/javascript/base.js?v=2908b6a820067b60b49c2022181c7460" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+var tz = (new Date()).getTimezoneOffset();
+try {
+document.cookie = "T=" + tz + "; expires=Tue, 31 Dec 2030 20:47:11 UTC; path=/";
+} catch (e) {}
+if (window.facebookParams) {
+window.facebookParams += '&tz=' + tz;
+}
+function analytics() {
+
+
+
+}
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var gLastHash = "";
+var gThumbnails = [];
+var kThumbHeight = 150;
+var kThumbWidth = 375;
+var kMaxThumbnails = 3;
+$(function() {
+checkHash();
+instrumentCommentBox($("#comment"), 1024);
+showInputHint($("#comment"), "Add a comment");
+$('#close').click(curry(sendToParent, "close"));
+$('#shareform').submit(submitShare);
+$('#loginform').submit(submitLogin);
+$('#loginform #rememberrow').css('display', 'none');
+$('#title').focus();
+fitWidth($('#title'));
+fitWidth($('#comment'));
+setInterval(checkHash, 100);
+});
+function fitWidth(e) {
+// sub offsetWidth+300 to account for borders or whatever
+e.css('width', 430 - e.offset().left - e[0].offsetWidth + 300);
+}
+// also called from eventlist-debug.js
+function updateFrameSize() {
+sendToParent('frameh-' + (document.body.offsetHeight + 25));
+}
+function updateImages() {
+var media = $("#media");
+media.empty();
+if (gThumbnails.length > 0) {
+var heightRatios = [];
+var totalWidth = 0;
+for (var i = 0; i < gThumbnails.length; i++) {
+var image = gThumbnails[i];
+var heightRatio = Math.min(1, kThumbHeight / image.height);
+heightRatios.push(heightRatio);
+totalWidth += Math.floor(heightRatio * image.width);
+}
+var widthRatio = Math.min(1, kThumbWidth / totalWidth);
+for (var i = 0; i < gThumbnails.length; i++) {
+var image = gThumbnails[i];
+var thumb = document.createElement("img");
+thumb.src = image.src;
+var ratio = heightRatios[i] * widthRatio;
+thumb.style.width = Math.floor(ratio * image.width) + "px";
+thumb.style.height = Math.floor(ratio * image.height) + "px";
+thumb.title = "Click to remove";
+$(thumb).click(curry(removeImage, image));
+media.append(thumb);
+}
+}
+updateFrameSize();
+}
+function addImage(src, width, height, video) {
+var newThumbnails = [];
+for (var i = 0; i < gThumbnails.length; i++) {
+if (gThumbnails[i].src != src) {
+newThumbnails.push(gThumbnails[i]);
+}
+}
+if (newThumbnails.length == kMaxThumbnails) {
+newThumbnails.shift();
+}
+newThumbnails.push({
+src: src,
+width: width,
+height: height,
+video: video
+});
+gThumbnails = newThumbnails;
+updateImages();
+}
+function removeImage(image) {
+var newThumbnails = [];
+for (var i = 0; i < gThumbnails.length; i++) {
+if (gThumbnails[i] != image) {
+newThumbnails.push(gThumbnails[i]);
+}
+}
+gThumbnails = newThumbnails;
+updateImages();
+}
+function showLogin() {
+$('#sharediv').css('display', 'none');
+$('#logindiv').css('display', 'block');
+$('#logindiv #email').focus();
+}
+function submitLogin() {
+if (checkRequired($('#loginform')[0], ['email', 'password']))
+submitShare();
+return false;
+}
+function submitShare() {
+var args = $('#shareform').serializeObj();
+if (!checkRequired($('#shareform')[0], ['title']))
+return false;
+if ($("#sharestream").length > 0) {
+args.stream = $("#sharestream").val();
+}
+var login = $('#loginform').serializeObj();
+if (login.email) {
+$.extend(args, login);
+} else {
+if (!getCookie('U') || !getCookie('AT')) {
+showLogin(); // need to get login
+return false;
+}
+}
+for (var i = 0; i < gThumbnails.length; i++) {
+args['image' + i] = gThumbnails[i].src;
+if (gThumbnails[i].video)
+args['video' + i] = gThumbnails[i].video;
+}
+$('.loadingimg').css('display', 'inline');
+$('#submit').attr('disabled', 'true');
+$.postJSON("/share/publish", args, function(r) {
+$('.loadingimg').css('display', 'none');
+$('#submit').removeAttr('disabled');
+if (r.shared) {
+sendToParent("close-shared");
+} else if (r.loginreq) {
+showLogin();
+} else if (r.message_html) {
+showLogin();
+$('#messagearea').html(r.message_html).show();
+updateFrameSize();
+}
+});
+return false;
+}
+function parseParams(s) {
+var r = {};
+var a = s.split('&');
+for (var i in a) {
+var kv = a[i].split('=');
+r[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
+}
+return r;
+}
+function checkHash() {
+var hash = location.href.split('#')[1]; // don't use location.hash
+if (!hash || !hash.length)
+return;
+var p = parseParams(hash);
+location.replace(location.href.split("#")[0] + "#");
+for (var i in p) {
+var v = p[i];
+switch (i) {
+case 'url':
+$('input[name=url]').val(v);
+break;
+case 'title':
+$('input[name=title]').val(v);
+break;
+case 'image':
+addImage(v, parseInt(p.w), parseInt(p.h), p.video);
+break;
+case 'selection':
+v = $.trim(v);
+if (v) $("#comment").val('"' + v.substring(0, 1020) + '"');
+break;
+}
+}
+}
+function sendToParent(msg) {
+var url = $('input[name=url]').val().split('#')[0] + "#FFSHARE-" + msg;
+try {
+top.location.replace(url);
+} catch (e) {
+top.location = url;
+}
+}
+//]]>
+</script>
+
+</body>
+</html>

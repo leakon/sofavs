@@ -1,0 +1,5 @@
+<?php
+
+define( 'CURRENT_ENVIRONMENT',		ENVIRONMENT_DEVELOP );
+
+?>

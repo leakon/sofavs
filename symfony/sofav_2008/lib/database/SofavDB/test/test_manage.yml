@@ -1,0 +1,6 @@
+
+# The first connection
+first:	mysql://pma@localhost:3306/sofav?encoding=utf8&persistent=off	# test comment
+
+# The first connection
+second: mysql://root:123456@localhost:3306/sofav_2008?encoding=utf8&persistent=off

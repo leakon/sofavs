@@ -1,0 +1,1 @@
+webshotcmd.exe /url http://www.baidu.com/ /out d:\tmp\baidu.com.jpg

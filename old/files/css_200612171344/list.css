@@ -1,0 +1,11 @@
+
+#list		{border:1px solid gray;}
+#list li	{margin:10px 0;}
+#list span.title a	{font-weight:bold; font-size:1.0em; color:blue;}
+#list span.title a:hover	{color:red;}
+#list span.datetime	{color:gray;}
+#list span.tags	{color:orange;}
+#list span.url	{color:green; font-size:0.9em;}
+#list a		{text-decoration:none;}
+#list a:hover	{text-decoration:none;}
+
